@@ -1,17 +1,31 @@
-import MatrixBackground from '@/components/MatrixBackground';
+'use client';
+
+import AnimatedBackground from '@/components/AnimatedBackground';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import Stats from '@/components/Stats';
+import Services from '@/components/Services';
+import Features from '@/components/Features';
+import Pricing from '@/components/Pricing';
+import Testimonials from '@/components/Testimonials';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen flex items-center justify-center">
-      <MatrixBackground />
-      <div className="z-10 text-center px-4">
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
-          Alchelogic
-        </h1>
-        <p className="text-xl md:text-2xl text-purple-300">
-          Enterprise Security. Small Business Pricing.
-        </p>
-      </div>
-    </main>
+    <>
+      <AnimatedBackground />
+      <main className="relative z-10 min-h-screen">
+        <Navbar />
+        <Hero />
+        <Stats />
+        <Services />
+        <Features />
+        <Pricing />
+        <Testimonials />
+        <Contact />
+        <Footer />
+      </main>
+    </>
   );
 }
