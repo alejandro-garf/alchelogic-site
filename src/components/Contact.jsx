@@ -5,6 +5,31 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, Calendar } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
+// Input sanitization to prevent XSS attacks
+const sanitizeInput = (input) => {
+  if (typeof input !== 'string') return '';
+  return input
+    .replace(/[<>]/g, '') // Remove angle brackets to prevent HTML injection
+    .replace(/javascript:/gi, '') // Remove javascript: protocol
+    .replace(/on\w+=/gi, '') // Remove event handlers like onclick=, onerror=
+    .replace(/data:/gi, '') // Remove data: protocol
+    .trim();
+};
+
+// Email validation regex
+const isValidEmail = (email) => {
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  return emailRegex.test(email) && email.length <= 254;
+};
+
+// Validation constraints
+const CONSTRAINTS = {
+  name: { maxLength: 100, minLength: 2 },
+  email: { maxLength: 254, minLength: 5 },
+  company: { maxLength: 100 },
+  message: { maxLength: 2000 },
+};
+
 export default function Contact() {
   const { isDark } = useTheme();
   const [formData, setFormData] = useState({
@@ -15,16 +40,92 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validateField = (name, value) => {
+    const constraint = CONSTRAINTS[name];
+    if (!constraint) return null;
+
+    if (name === 'name') {
+      if (value.length < constraint.minLength) {
+        return `Name must be at least ${constraint.minLength} characters`;
+      }
+      if (value.length > constraint.maxLength) {
+        return `Name must be less than ${constraint.maxLength} characters`;
+      }
+    }
+
+    if (name === 'email') {
+      if (value.length < constraint.minLength) {
+        return 'Please enter a valid email address';
+      }
+      if (!isValidEmail(value)) {
+        return 'Please enter a valid email address';
+      }
+    }
+
+    if (name === 'company' && value.length > constraint.maxLength) {
+      return `Company name must be less than ${constraint.maxLength} characters`;
+    }
+
+    if (name === 'message' && value.length > constraint.maxLength) {
+      return `Message must be less than ${constraint.maxLength} characters`;
+    }
+
+    return null;
+  };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    const sanitizedValue = sanitizeInput(value);
+
+    // Enforce max length at input level
+    const constraint = CONSTRAINTS[name];
+    const truncatedValue = constraint?.maxLength
+      ? sanitizedValue.slice(0, constraint.maxLength)
+      : sanitizedValue;
+
+    setFormData({ ...formData, [name]: truncatedValue });
+
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: null });
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    Object.keys(formData).forEach((field) => {
+      if (field === 'name' || field === 'email') {
+        const error = validateField(field, formData[field]);
+        if (error) newErrors[field] = error;
+      }
+    });
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate before submitting
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
+      // Sanitize all inputs before sending
+      const sanitizedData = {
+        name: sanitizeInput(formData.name),
+        email: sanitizeInput(formData.email),
+        company: sanitizeInput(formData.company),
+        message: sanitizeInput(formData.message),
+      };
+
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -32,22 +133,26 @@ export default function Contact() {
         },
         body: JSON.stringify({
           access_key: '2db7cfd8-9943-440a-a1d9-0c7e65cadc7b',
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          message: formData.message,
-          subject: `New contact from ${formData.name} - Alchelogic`,
+          to_email: 'info@alchelogic.com',
+          from_name: 'Alchelogic Website',
+          name: sanitizedData.name,
+          email: sanitizedData.email,
+          company: sanitizedData.company,
+          message: sanitizedData.message,
+          subject: `New contact from ${sanitizedData.name} - Alchelogic`,
+          replyto: sanitizedData.email,
         }),
       });
 
       if (response.ok) {
         setSubmitted(true);
         setFormData({ name: '', email: '', company: '', message: '' });
+        setErrors({});
       } else {
-        alert('Something went wrong. Please try again.');
+        setErrors({ form: 'Something went wrong. Please try again.' });
       }
     } catch (error) {
-      alert('Something went wrong. Please try again.');
+      setErrors({ form: 'Something went wrong. Please try again.' });
     }
 
     setIsSubmitting(false);
@@ -147,13 +252,19 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  maxLength={CONSTRAINTS.name.maxLength}
+                  minLength={CONSTRAINTS.name.minLength}
+                  autoComplete="name"
                   className={`w-full border rounded-lg px-4 py-3 placeholder-gray-400 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 transition ${
                     isDark
                       ? 'bg-gray-900/50 border-gray-600 text-white'
                       : 'bg-white border-gray-300 text-gray-900'
-                  }`}
+                  } ${errors.name ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                   placeholder="John Smith"
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                )}
               </div>
 
               <div>
@@ -168,13 +279,18 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  maxLength={CONSTRAINTS.email.maxLength}
+                  autoComplete="email"
                   className={`w-full border rounded-lg px-4 py-3 placeholder-gray-400 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 transition ${
                     isDark
                       ? 'bg-gray-900/50 border-gray-600 text-white'
                       : 'bg-white border-gray-300 text-gray-900'
-                  }`}
+                  } ${errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                   placeholder="john@company.com"
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
               </div>
 
               <div>
@@ -188,6 +304,8 @@ export default function Contact() {
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
+                  maxLength={CONSTRAINTS.company.maxLength}
+                  autoComplete="organization"
                   className={`w-full border rounded-lg px-4 py-3 placeholder-gray-400 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 transition ${
                     isDark
                       ? 'bg-gray-900/50 border-gray-600 text-white'
@@ -208,6 +326,7 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
+                  maxLength={CONSTRAINTS.message.maxLength}
                   className={`w-full border rounded-lg px-4 py-3 placeholder-gray-400 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 transition resize-none ${
                     isDark
                       ? 'bg-gray-900/50 border-gray-600 text-white'
@@ -215,6 +334,9 @@ export default function Contact() {
                   }`}
                   placeholder="Tell us about your security needs..."
                 />
+                <p className={`text-xs mt-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                  {formData.message.length}/{CONSTRAINTS.message.maxLength} characters
+                </p>
               </div>
 
               <button
@@ -224,6 +346,12 @@ export default function Contact() {
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
+
+              {errors.form && (
+                <p className="text-red-500 text-center font-semibold mt-4">
+                  {errors.form}
+                </p>
+              )}
 
               {submitted && (
                 <p className="text-green-500 text-center font-semibold mt-4">
