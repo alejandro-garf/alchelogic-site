@@ -13,15 +13,44 @@ export default function Contact() {
     company: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert("Thanks for reaching out! We'll be in touch soon.");
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '2db7cfd8-9943-440a-a1d9-0c7e65cadc7b',
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          message: formData.message,
+          subject: `New contact from ${formData.name} - Alchelogic`,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', company: '', message: '' });
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      alert('Something went wrong. Please try again.');
+    }
+
+    setIsSubmitting(false);
   };
 
   return (
@@ -36,25 +65,28 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            <span className="inline-block text-sm font-semibold tracking-widest uppercase text-violet-500 mb-3">
+              Get Started
+            </span>
             <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}>
               Ready to Secure Your Business?
             </h2>
-            <p className={`mt-3 sm:mt-4 text-base sm:text-lg md:text-xl leading-relaxed ${
-              isDark ? 'text-gray-300' : 'text-gray-600'
+            <p className={`mt-4 text-base sm:text-lg md:text-xl leading-relaxed ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
             }`}>
-              Get in touch for a free security assessment. We'll show you exactly where you're vulnerable and how we can help.
+              Let's talk about your needs and see how we can help.
             </p>
 
             <div className="mt-6 sm:mt-8 space-y-4">
               <div className={`flex items-center ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                 <Mail className={`w-5 h-5 mr-3 flex-shrink-0 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} />
-                <span>contact@alchelogic.com</span>
+                <span>info@alchelogic.com</span>
               </div>
               <div className={`flex items-center ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                 <Phone className={`w-5 h-5 mr-3 flex-shrink-0 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} />
-                <span>(555) 123-4567</span>
+                <span>(650) 436-3490</span>
               </div>
             </div>
 
@@ -64,23 +96,23 @@ export default function Contact() {
                 ? 'bg-gray-800/50 border-gray-700/50 backdrop-blur-sm'
                 : 'bg-violet-50 border-violet-100'
             }`}>
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center gap-3 mb-2">
                 <Calendar className={`w-6 h-6 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} />
                 <h3 className={`text-lg sm:text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                  Prefer to schedule directly?
+                  Schedule a Free Consultation
                 </h3>
               </div>
               <p className={`text-sm sm:text-base mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                Book a free 30-minute consultation at a time that works for you.
+                Book a free 30-minute consultation at a time that works for you. No obligation, no pressure, just a conversation about your security and IT needs.
               </p>
               <a
-                href="https://calendly.com/your-link-here"
+                href="https://calendly.com/alchelogic/alchelogic"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-full sm:w-auto bg-violet-600 hover:bg-violet-700 hover:scale-105 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25"
               >
                 <Calendar className="w-5 h-5 mr-2" />
-                Book a Meeting
+                Book Free Consultation
               </a>
             </div>
           </motion.div>
@@ -187,10 +219,17 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full bg-violet-600 hover:bg-violet-700 hover:scale-110 text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25"
+                disabled={isSubmitting}
+                className="w-full bg-violet-600 hover:bg-violet-700 hover:scale-105 text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
+
+              {submitted && (
+                <p className="text-green-500 text-center font-semibold mt-4">
+                  Thanks for reaching out! We'll be in touch soon.
+                </p>
+              )}
             </form>
           </motion.div>
         </div>

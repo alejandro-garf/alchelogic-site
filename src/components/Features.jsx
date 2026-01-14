@@ -7,18 +7,19 @@ import { useTheme } from '@/context/ThemeContext';
 const features = [
   {
     label: '24/7 Protection',
-    headline: 'We Watch. You Sleep.',
+    headline: 'Support Around the Clock',
     description: 'Round-the-clock monitoring by security experts. Threats detected and contained before they spread.',
     bullets: [
       'Real-time threat detection',
       'Automated incident response',
       'Expert security analysts on call',
+      'A call or text away when you need us',
     ],
     image: '/images/womanengineer.png',
   },
   {
     label: 'Complete Visibility',
-    headline: 'See Everything. Miss Nothing.',
+    headline: 'See Everything. Miss Nothing',
     description: 'Full network discovery, endpoint monitoring, and XDR with unlimited log retention.',
     bullets: [
       '90 days hot storage',
@@ -29,8 +30,8 @@ const features = [
   },
   {
     label: 'Rapid Response',
-    headline: 'From Alert to Action in Minutes.',
-    description: 'Automated response playbooks and expert forensics when you need them most.',
+    headline: 'From Alert to Action in Minutes',
+    description: <>Automated response playbooks and expert forensics when you need them most. <strong>Sit back and let us handle it.</strong></>,
     bullets: [
       'Automated threat containment',
       'Remote forensics capabilities',
@@ -64,10 +65,10 @@ export default function Features() {
             {/* Visual - alternates sides */}
             <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
               <div
-                className={`relative rounded-2xl border backdrop-blur-sm overflow-hidden ${
+                className={`relative rounded-2xl border backdrop-blur-sm overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-violet-500/20 cursor-pointer ${
                   feature.image ? 'p-0' : 'p-1'
                 } ${
-                  isDark ? 'bg-gray-800/30 border-gray-700/50' : 'bg-white/50 border-gray-200/50'
+                  isDark ? 'bg-gray-800/30 border-gray-700/50 hover:border-violet-500/50' : 'bg-white/50 border-gray-200/50 hover:border-violet-300'
                 }`}
               >
                 {feature.image ? (

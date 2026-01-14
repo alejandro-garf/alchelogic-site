@@ -44,19 +44,22 @@ export default function Stats() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
+          <span className="inline-block text-sm font-semibold tracking-widest uppercase text-violet-500 mb-3">
+            Why It Matters
+          </span>
           <h2
             className={`text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}
           >
-            The Security Gap is Growing
+            Small Businesses Face Enterprise-Level Threats
           </h2>
           <p
-            className={`mt-3 sm:mt-4 text-base sm:text-lg md:text-xl ${
-              isDark ? 'text-gray-300' : 'text-gray-600'
+            className={`mt-4 text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
             }`}
           >
-            Small businesses face enterprise-level threats without enterprise resources.
+            We keep your online operations safe so you can focus on serving the community and running your business, all without breaking the bank.
           </p>
         </motion.div>
 

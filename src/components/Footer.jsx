@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Linkedin, Twitter } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
 export default function Footer() {
@@ -182,7 +181,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#"
+                  href="#about"
                   className={`inline-block transition-all duration-300 text-sm hover:scale-110 ${
                     isDark
                       ? 'text-gray-400 hover:text-violet-400'
@@ -190,30 +189,6 @@ export default function Footer() {
                   }`}
                 >
                   About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className={`inline-block transition-all duration-300 text-sm hover:scale-110 ${
-                    isDark
-                      ? 'text-gray-400 hover:text-violet-400'
-                      : 'text-gray-600 hover:text-violet-600'
-                  }`}
-                >
-                  Privacy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className={`inline-block transition-all duration-300 text-sm hover:scale-110 ${
-                    isDark
-                      ? 'text-gray-400 hover:text-violet-400'
-                      : 'text-gray-600 hover:text-violet-600'
-                  }`}
-                >
-                  Terms
                 </a>
               </li>
             </ul>
@@ -227,30 +202,14 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="mailto:contact@alchelogic.com"
+                  href="mailto:info@alchelogic.com"
                   className={`inline-block transition-all duration-300 text-sm hover:scale-110 ${
                     isDark
                       ? 'text-gray-400 hover:text-violet-400'
                       : 'text-gray-600 hover:text-violet-600'
                   }`}
                 >
-                  contact@alchelogic.com
-                </a>
-              </li>
-              <li className="flex gap-4 pt-2">
-                <a href="#" className={`transition-all duration-300 hover:scale-125 ${
-                  isDark
-                    ? 'text-gray-400 hover:text-violet-400'
-                    : 'text-gray-600 hover:text-violet-600'
-                }`}>
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a href="#" className={`transition-all duration-300 hover:scale-125 ${
-                  isDark
-                    ? 'text-gray-400 hover:text-violet-400'
-                    : 'text-gray-600 hover:text-violet-600'
-                }`}>
-                  <Twitter className="w-5 h-5" />
+                  info@alchelogic.com
                 </a>
               </li>
             </ul>
@@ -262,7 +221,7 @@ export default function Footer() {
           isDark ? 'border-gray-800/50' : 'border-gray-200'
         }`}>
           <p className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
-            &copy; 2025 Alchelogic. All rights reserved.
+            &copy; 2026 Alchelogic. All rights reserved.
           </p>
         </div>
       </div>

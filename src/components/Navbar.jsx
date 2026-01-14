@@ -37,6 +37,14 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             <a
+              href="#about"
+              className={`text-sm font-medium transition-all duration-300 hover:scale-110 ${
+                isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              About
+            </a>
+            <a
               href="#services"
               className={`text-sm font-medium transition-all duration-300 hover:scale-110 ${
                 isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
@@ -66,7 +74,7 @@ export default function Navbar() {
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${
                 isDark
-                  ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700'
+                  ? 'bg-gray-800 text-white hover:bg-gray-700'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
               aria-label="Toggle theme"
@@ -88,7 +96,7 @@ export default function Navbar() {
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition ${
                 isDark
-                  ? 'bg-gray-800 text-yellow-400'
+                  ? 'bg-gray-800 text-white'
                   : 'bg-gray-100 text-gray-600'
               }`}
               aria-label="Toggle theme"
@@ -113,6 +121,15 @@ export default function Navbar() {
           } backdrop-blur-md`}
         >
           <div className="flex flex-col items-center justify-center h-full gap-8">
+            <a
+              href="#about"
+              className={`text-2xl font-medium transition-all duration-300 hover:scale-110 ${
+                isDark ? 'text-white hover:text-violet-400' : 'text-gray-900 hover:text-violet-600'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              About
+            </a>
             <a
               href="#services"
               className={`text-2xl font-medium transition-all duration-300 hover:scale-110 ${

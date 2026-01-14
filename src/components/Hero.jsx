@@ -8,7 +8,7 @@ export default function Hero() {
   const { isDark } = useTheme();
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 pb-10 md:pt-0 md:pb-0">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-10 md:pt-20 md:pb-0">
       {/* Content */}
       <div className="relative z-10 text-center w-full max-w-5xl mx-auto px-4 sm:px-6">
         <motion.h1
@@ -50,46 +50,46 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className={`mt-6 sm:mt-10 w-full max-w-4xl mx-auto rounded-2xl p-4 sm:p-6 md:p-8 backdrop-blur-sm border ${
+          className={`mt-6 sm:mt-8 w-full max-w-3xl mx-auto rounded-xl p-3 sm:p-4 md:p-5 backdrop-blur-sm border ${
             isDark
               ? 'bg-gray-800/30 border-gray-700/50'
               : 'bg-white/30 border-gray-200/50'
           }`}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 items-center">
             {/* Image on the left */}
             <div className="flex items-center justify-center order-2 md:order-1">
               <img
                 src="/images/fullsolution.png"
                 alt="Full Security Solution"
-                className="w-full max-w-[280px] sm:max-w-sm md:max-w-md h-auto object-contain"
+                className="w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] h-auto object-contain transition-all duration-300 hover:scale-110 cursor-pointer"
               />
             </div>
 
             {/* Content on the right */}
             <div className="text-center md:text-left order-1 md:order-2">
-              <p className={`text-base sm:text-lg md:text-xl font-semibold leading-relaxed ${
+              <p className={`text-sm sm:text-base md:text-lg font-semibold leading-relaxed ${
                 isDark ? 'text-gray-100' : 'text-gray-800'
               }`}>
                 Complete cybersecurity solutions for nonprofits and small businesses.
               </p>
-              <p className={`text-sm sm:text-base md:text-lg font-semibold mt-2 ${
+              <p className={`text-xs sm:text-sm md:text-base font-semibold mt-1 ${
                 isDark ? 'text-violet-400' : 'text-violet-600'
               }`}>
                 24/7 protection without the enterprise price tag.
               </p>
 
               {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 mt-4 sm:mt-6 justify-center md:justify-start">
+              <div className="flex flex-col sm:flex-row gap-2 mt-3 sm:mt-4 justify-center md:justify-start">
                 <a
-                  href="#contact"
-                  className="bg-violet-600 hover:bg-violet-700 hover:scale-110 text-white px-5 sm:px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25 text-center text-sm sm:text-base"
+                  href="#pricing"
+                  className="bg-violet-600 hover:bg-violet-700 hover:scale-105 text-white px-4 sm:px-5 py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25 text-center text-xs sm:text-sm"
                 >
                   Get Started
                 </a>
                 <a
                   href="#contact"
-                  className={`border-2 px-5 sm:px-6 py-3 rounded-lg font-semibold transition-all duration-300 text-center hover:scale-110 text-sm sm:text-base ${
+                  className={`border-2 px-4 sm:px-5 py-2 rounded-lg font-semibold transition-all duration-300 text-center hover:scale-105 text-xs sm:text-sm ${
                     isDark
                       ? 'border-gray-600 hover:border-violet-500 text-gray-300 hover:text-violet-400'
                       : 'border-gray-300 hover:border-violet-600 text-gray-700 hover:text-violet-600'

@@ -17,11 +17,19 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
+          <span className="inline-block text-sm font-semibold tracking-widest uppercase text-violet-500 mb-3">
+            Testimonials
+          </span>
           <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>
             Trusted by Growing Businesses
           </h2>
+          <p className={`mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto ${
+            isDark ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            See what our clients have to say about working with us
+          </p>
         </motion.div>
 
         <motion.div

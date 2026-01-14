@@ -26,13 +26,16 @@ export default function Pricing() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
+          <span className="inline-block text-sm font-semibold tracking-widest uppercase text-violet-500 mb-3">
+            Pricing
+          </span>
           <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>
             Simple, Transparent Pricing
           </h2>
-          <p className={`mt-3 sm:mt-4 text-base sm:text-lg md:text-xl ${
-            isDark ? 'text-gray-300' : 'text-gray-600'
+          <p className={`mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto ${
+            isDark ? 'text-gray-400' : 'text-gray-600'
           }`}>
             One plan. Everything included. No surprises.
           </p>
@@ -54,14 +57,14 @@ export default function Pricing() {
             <div className="text-center">
               <div className="flex items-baseline justify-center">
                 <span className="text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
-                  $25
+                  $45
                 </span>
                 <span className={`text-lg sm:text-xl ml-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                   /seat/month
                 </span>
               </div>
-              <p className={`mt-2 text-sm sm:text-base font-semibold ${isDark ? 'text-violet-400' : 'text-violet-600'}`}>
-                or $300/year per seat — save 2 months
+              <p className={`mt-4 text-sm sm:text-base font-medium italic ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                We will work with your budget! Let's not let money be the reason we can't keep you secure.
               </p>
             </div>
 
