@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, Calendar } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
 export default function Contact() {
@@ -25,10 +25,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-16 sm:py-24 relative">
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Left - Info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -36,26 +36,52 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className={`text-4xl md:text-5xl font-bold tracking-tight ${
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}>
               Ready to Secure Your Business?
             </h2>
-            <p className={`mt-4 text-lg md:text-xl leading-relaxed ${
+            <p className={`mt-3 sm:mt-4 text-base sm:text-lg md:text-xl leading-relaxed ${
               isDark ? 'text-gray-300' : 'text-gray-600'
             }`}>
               Get in touch for a free security assessment. We'll show you exactly where you're vulnerable and how we can help.
             </p>
 
-            <div className="mt-8 space-y-4">
+            <div className="mt-6 sm:mt-8 space-y-4">
               <div className={`flex items-center ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                <Mail className={`w-5 h-5 mr-3 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} />
+                <Mail className={`w-5 h-5 mr-3 flex-shrink-0 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} />
                 <span>contact@alchelogic.com</span>
               </div>
               <div className={`flex items-center ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                <Phone className={`w-5 h-5 mr-3 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} />
+                <Phone className={`w-5 h-5 mr-3 flex-shrink-0 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} />
                 <span>(555) 123-4567</span>
               </div>
+            </div>
+
+            {/* Calendly Booking Section */}
+            <div className={`mt-8 sm:mt-10 p-5 sm:p-6 rounded-xl sm:rounded-2xl border ${
+              isDark
+                ? 'bg-gray-800/50 border-gray-700/50 backdrop-blur-sm'
+                : 'bg-violet-50 border-violet-100'
+            }`}>
+              <div className="flex items-center gap-3 mb-3">
+                <Calendar className={`w-6 h-6 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} />
+                <h3 className={`text-lg sm:text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  Prefer to schedule directly?
+                </h3>
+              </div>
+              <p className={`text-sm sm:text-base mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                Book a free 30-minute consultation at a time that works for you.
+              </p>
+              <a
+                href="https://calendly.com/your-link-here"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-full sm:w-auto bg-violet-600 hover:bg-violet-700 hover:scale-105 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25"
+              >
+                <Calendar className="w-5 h-5 mr-2" />
+                Book a Meeting
+              </a>
             </div>
           </motion.div>
 
@@ -66,9 +92,12 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            <div className={`text-center mb-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+              <span className="text-sm font-medium">Or send us a message</span>
+            </div>
             <form
               onSubmit={handleSubmit}
-              className={`space-y-5 rounded-2xl p-8 border ${
+              className={`space-y-4 sm:space-y-5 rounded-xl sm:rounded-2xl p-5 sm:p-8 border ${
                 isDark
                   ? 'bg-gray-800/50 border-gray-700/50 backdrop-blur-sm'
                   : 'bg-gray-50 border-gray-200'
@@ -158,7 +187,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full bg-violet-600 hover:bg-violet-700 text-white py-3 rounded-lg font-semibold transition shadow-lg shadow-violet-600/25"
+                className="w-full bg-violet-600 hover:bg-violet-700 hover:scale-110 text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25"
               >
                 Send Message
               </button>

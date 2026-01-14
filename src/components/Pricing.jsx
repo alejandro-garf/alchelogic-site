@@ -16,9 +16,9 @@ export default function Pricing() {
   const { isDark } = useTheme();
 
   return (
-    <section id="pricing" className="py-24 relative">
+    <section id="pricing" className="py-16 sm:py-24 relative">
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -26,12 +26,12 @@ export default function Pricing() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className={`text-4xl md:text-5xl font-bold tracking-tight ${
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>
             Simple, Transparent Pricing
           </h2>
-          <p className={`mt-4 text-lg md:text-xl ${
+          <p className={`mt-3 sm:mt-4 text-base sm:text-lg md:text-xl ${
             isDark ? 'text-gray-300' : 'text-gray-600'
           }`}>
             One plan. Everything included. No surprises.
@@ -45,7 +45,7 @@ export default function Pricing() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-16 max-w-xl mx-auto"
         >
-          <div className={`rounded-3xl p-10 md:p-12 shadow-lg border ${
+          <div className={`rounded-3xl p-6 sm:p-10 md:p-12 shadow-lg border transition-all duration-300 hover:scale-105 ${
             isDark
               ? 'bg-gray-800/50 border-gray-700/50 backdrop-blur-sm'
               : 'bg-white border-gray-200'
@@ -53,14 +53,14 @@ export default function Pricing() {
             {/* Price */}
             <div className="text-center">
               <div className="flex items-baseline justify-center">
-                <span className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
                   $25
                 </span>
-                <span className={`text-xl ml-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                <span className={`text-lg sm:text-xl ml-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                   /seat/month
                 </span>
               </div>
-              <p className={`mt-2 font-semibold ${isDark ? 'text-violet-400' : 'text-violet-600'}`}>
+              <p className={`mt-2 text-sm sm:text-base font-semibold ${isDark ? 'text-violet-400' : 'text-violet-600'}`}>
                 or $300/year per seat — save 2 months
               </p>
             </div>
@@ -84,7 +84,7 @@ export default function Pricing() {
             {/* CTA */}
             <a
               href="#contact"
-              className="block w-full bg-violet-600 hover:bg-violet-700 text-white py-4 rounded-xl font-semibold text-center mt-8 transition shadow-lg shadow-violet-600/25"
+              className="block w-full bg-violet-600 hover:bg-violet-700 hover:scale-110 text-white py-4 rounded-xl font-semibold text-center mt-8 transition-all duration-300 shadow-lg shadow-violet-600/25"
             >
               Get Started
             </a>

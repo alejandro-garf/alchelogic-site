@@ -38,7 +38,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             <a
               href="#services"
-              className={`text-sm font-medium transition ${
+              className={`text-sm font-medium transition-all duration-300 hover:scale-110 ${
                 isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}
             >
@@ -46,7 +46,7 @@ export default function Navbar() {
             </a>
             <a
               href="#pricing"
-              className={`text-sm font-medium transition ${
+              className={`text-sm font-medium transition-all duration-300 hover:scale-110 ${
                 isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}
             >
@@ -54,7 +54,7 @@ export default function Navbar() {
             </a>
             <a
               href="#contact"
-              className={`text-sm font-medium transition ${
+              className={`text-sm font-medium transition-all duration-300 hover:scale-110 ${
                 isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}
             >
@@ -64,7 +64,7 @@ export default function Navbar() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-lg transition ${
+              className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${
                 isDark
                   ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -76,7 +76,7 @@ export default function Navbar() {
 
             <a
               href="#contact"
-              className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition shadow-lg shadow-violet-600/25"
+              className="bg-violet-600 hover:bg-violet-700 hover:scale-110 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 shadow-lg shadow-violet-600/25"
             >
               Get Protected
             </a>
@@ -115,7 +115,7 @@ export default function Navbar() {
           <div className="flex flex-col items-center justify-center h-full gap-8">
             <a
               href="#services"
-              className={`text-2xl font-medium transition ${
+              className={`text-2xl font-medium transition-all duration-300 hover:scale-110 ${
                 isDark ? 'text-white hover:text-violet-400' : 'text-gray-900 hover:text-violet-600'
               }`}
               onClick={() => setIsOpen(false)}
@@ -124,7 +124,7 @@ export default function Navbar() {
             </a>
             <a
               href="#pricing"
-              className={`text-2xl font-medium transition ${
+              className={`text-2xl font-medium transition-all duration-300 hover:scale-110 ${
                 isDark ? 'text-white hover:text-violet-400' : 'text-gray-900 hover:text-violet-600'
               }`}
               onClick={() => setIsOpen(false)}
@@ -133,7 +133,7 @@ export default function Navbar() {
             </a>
             <a
               href="#contact"
-              className={`text-2xl font-medium transition ${
+              className={`text-2xl font-medium transition-all duration-300 hover:scale-110 ${
                 isDark ? 'text-white hover:text-violet-400' : 'text-gray-900 hover:text-violet-600'
               }`}
               onClick={() => setIsOpen(false)}
@@ -142,7 +142,7 @@ export default function Navbar() {
             </a>
             <a
               href="#contact"
-              className="bg-violet-600 hover:bg-violet-700 text-white px-8 py-3 rounded-lg font-medium mt-4 transition"
+              className="bg-violet-600 hover:bg-violet-700 hover:scale-110 text-white px-8 py-3 rounded-lg font-medium mt-4 transition-all duration-300"
               onClick={() => setIsOpen(false)}
             >
               Get Protected

@@ -8,14 +8,14 @@ export default function Hero() {
   const { isDark } = useTheme();
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 pb-10 md:pt-0 md:pb-0">
       {/* Content */}
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
+      <div className="relative z-10 text-center w-full max-w-5xl mx-auto px-4 sm:px-6">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className={`text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight ${
+          className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}
         >
@@ -26,44 +26,80 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent"
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent"
         >
           SMALL BUSINESS PRICING.
         </motion.h1>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className={`text-xl md:text-2xl mt-8 max-w-2xl mx-auto leading-relaxed ${
-            isDark ? 'text-gray-300' : 'text-gray-600'
-          }`}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="flex items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-6"
         >
-          Complete cybersecurity stack for nonprofits and small businesses. 24/7 protection without the enterprise price tag.
-        </motion.p>
+          <div className="h-px w-8 sm:w-12 bg-gradient-to-r from-transparent to-violet-500" />
+          <p className={`text-xs sm:text-sm md:text-base font-medium italic text-center ${
+            isDark ? 'text-white' : 'text-gray-800'
+          }`}>
+            By small business owners, for small business owners
+          </p>
+          <div className="h-px w-8 sm:w-12 bg-gradient-to-l from-transparent to-violet-500" />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mt-10"
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className={`mt-6 sm:mt-10 w-full max-w-4xl mx-auto rounded-2xl p-4 sm:p-6 md:p-8 backdrop-blur-sm border ${
+            isDark
+              ? 'bg-gray-800/30 border-gray-700/50'
+              : 'bg-white/30 border-gray-200/50'
+          }`}
         >
-          <a
-            href="#contact"
-            className="bg-violet-600 hover:bg-violet-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25"
-          >
-            Get Protected
-          </a>
-          <a
-            href="#services"
-            className={`border-2 px-8 py-4 rounded-lg font-semibold transition-all duration-300 ${
-              isDark
-                ? 'border-gray-600 hover:border-violet-500 text-gray-300 hover:text-violet-400'
-                : 'border-gray-300 hover:border-violet-600 text-gray-700 hover:text-violet-600'
-            }`}
-          >
-            See How It Works
-          </a>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-center">
+            {/* Image on the left */}
+            <div className="flex items-center justify-center order-2 md:order-1">
+              <img
+                src="/images/fullsolution.png"
+                alt="Full Security Solution"
+                className="w-full max-w-[280px] sm:max-w-sm md:max-w-md h-auto object-contain"
+              />
+            </div>
+
+            {/* Content on the right */}
+            <div className="text-center md:text-left order-1 md:order-2">
+              <p className={`text-base sm:text-lg md:text-xl font-semibold leading-relaxed ${
+                isDark ? 'text-gray-100' : 'text-gray-800'
+              }`}>
+                Complete cybersecurity solutions for nonprofits and small businesses.
+              </p>
+              <p className={`text-sm sm:text-base md:text-lg font-semibold mt-2 ${
+                isDark ? 'text-violet-400' : 'text-violet-600'
+              }`}>
+                24/7 protection without the enterprise price tag.
+              </p>
+
+              {/* Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 mt-4 sm:mt-6 justify-center md:justify-start">
+                <a
+                  href="#contact"
+                  className="bg-violet-600 hover:bg-violet-700 hover:scale-110 text-white px-5 sm:px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25 text-center text-sm sm:text-base"
+                >
+                  Get Started
+                </a>
+                <a
+                  href="#contact"
+                  className={`border-2 px-5 sm:px-6 py-3 rounded-lg font-semibold transition-all duration-300 text-center hover:scale-110 text-sm sm:text-base ${
+                    isDark
+                      ? 'border-gray-600 hover:border-violet-500 text-gray-300 hover:text-violet-400'
+                      : 'border-gray-300 hover:border-violet-600 text-gray-700 hover:text-violet-600'
+                  }`}
+                >
+                  Book a Consultation
+                </a>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
 

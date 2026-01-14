@@ -8,8 +8,8 @@ export default function Testimonials() {
   const { isDark } = useTheme();
 
   return (
-    <section className="py-24">
-      <div className="max-w-4xl mx-auto px-6">
+    <section className="py-16 sm:py-24">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export default function Testimonials() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-16"
         >
-          <div className={`relative rounded-2xl p-8 md:p-12 border shadow-sm ${
+          <div className={`relative rounded-2xl p-6 sm:p-8 md:p-12 border shadow-sm transition-all duration-300 hover:scale-105 ${
             isDark
               ? 'bg-gray-800/50 border-gray-700/50 backdrop-blur-sm'
               : 'bg-white border-gray-200'

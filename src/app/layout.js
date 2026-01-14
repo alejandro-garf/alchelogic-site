@@ -13,6 +13,12 @@ export const metadata = {
   description: "Complete cybersecurity stack for nonprofits and small businesses. 24/7 protection without the enterprise price tag.",
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

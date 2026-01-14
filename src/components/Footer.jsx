@@ -8,7 +8,7 @@ export default function Footer() {
   const { isDark } = useTheme();
 
   return (
-    <footer className="relative py-16 overflow-hidden">
+    <footer className="relative py-12 sm:py-16 overflow-hidden">
       {/* Lava lamp animated blobs - only in dark mode */}
       {isDark && <div className="absolute inset-0 overflow-hidden">
         {/* Blob 1 - Large, slow moving */}
@@ -113,18 +113,18 @@ export default function Footer() {
       </div>}
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           {/* Logo & Tagline */}
-          <div>
-            <span className={`text-2xl font-bold bg-gradient-to-r bg-clip-text text-transparent ${
+          <div className="col-span-2 md:col-span-1">
+            <span className={`text-xl sm:text-2xl font-bold bg-gradient-to-r bg-clip-text text-transparent ${
               isDark
                 ? 'from-violet-400 via-purple-400 to-fuchsia-400'
                 : 'from-violet-500 via-purple-500 to-fuchsia-500'
             }`}>
               {"{Alchelogic}"}
             </span>
-            <p className={`mt-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+            <p className={`mt-2 text-xs sm:text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               Enterprise Security. Small Business Pricing.
             </p>
           </div>
@@ -138,7 +138,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#services"
-                  className={`transition text-sm ${
+                  className={`inline-block transition-all duration-300 text-sm hover:scale-110 ${
                     isDark
                       ? 'text-gray-400 hover:text-violet-400'
                       : 'text-gray-600 hover:text-violet-600'
@@ -150,7 +150,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#pricing"
-                  className={`transition text-sm ${
+                  className={`inline-block transition-all duration-300 text-sm hover:scale-110 ${
                     isDark
                       ? 'text-gray-400 hover:text-violet-400'
                       : 'text-gray-600 hover:text-violet-600'
@@ -162,7 +162,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#contact"
-                  className={`transition text-sm ${
+                  className={`inline-block transition-all duration-300 text-sm hover:scale-110 ${
                     isDark
                       ? 'text-gray-400 hover:text-violet-400'
                       : 'text-gray-600 hover:text-violet-600'
@@ -183,7 +183,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className={`transition text-sm ${
+                  className={`inline-block transition-all duration-300 text-sm hover:scale-110 ${
                     isDark
                       ? 'text-gray-400 hover:text-violet-400'
                       : 'text-gray-600 hover:text-violet-600'
@@ -195,7 +195,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className={`transition text-sm ${
+                  className={`inline-block transition-all duration-300 text-sm hover:scale-110 ${
                     isDark
                       ? 'text-gray-400 hover:text-violet-400'
                       : 'text-gray-600 hover:text-violet-600'
@@ -207,7 +207,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className={`transition text-sm ${
+                  className={`inline-block transition-all duration-300 text-sm hover:scale-110 ${
                     isDark
                       ? 'text-gray-400 hover:text-violet-400'
                       : 'text-gray-600 hover:text-violet-600'
@@ -228,7 +228,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:contact@alchelogic.com"
-                  className={`transition text-sm ${
+                  className={`inline-block transition-all duration-300 text-sm hover:scale-110 ${
                     isDark
                       ? 'text-gray-400 hover:text-violet-400'
                       : 'text-gray-600 hover:text-violet-600'
@@ -238,14 +238,14 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex gap-4 pt-2">
-                <a href="#" className={`transition ${
+                <a href="#" className={`transition-all duration-300 hover:scale-125 ${
                   isDark
                     ? 'text-gray-400 hover:text-violet-400'
                     : 'text-gray-600 hover:text-violet-600'
                 }`}>
                   <Linkedin className="w-5 h-5" />
                 </a>
-                <a href="#" className={`transition ${
+                <a href="#" className={`transition-all duration-300 hover:scale-125 ${
                   isDark
                     ? 'text-gray-400 hover:text-violet-400'
                     : 'text-gray-600 hover:text-violet-600'
