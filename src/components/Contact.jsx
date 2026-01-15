@@ -132,7 +132,7 @@ export default function Contact() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: '2db7cfd8-9943-440a-a1d9-0c7e65cadc7b',
+          access_key: '7c02d73e-2c50-4a92-94ec-e941f1c9a16f',
           to_email: 'info@alchelogic.com',
           from_name: 'Alchelogic Website',
           name: sanitizedData.name,
