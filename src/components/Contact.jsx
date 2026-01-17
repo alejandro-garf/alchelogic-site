@@ -126,21 +126,16 @@ export default function Contact() {
         message: sanitizeInput(formData.message),
       };
 
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: '7c02d73e-2c50-4a92-94ec-e941f1c9a16f',
-          to_email: 'info@alchelogic.com',
-          from_name: 'Alchelogic Website',
           name: sanitizedData.name,
           email: sanitizedData.email,
           company: sanitizedData.company,
           message: sanitizedData.message,
-          subject: `New contact from ${sanitizedData.name} - Alchelogic`,
-          replyto: sanitizedData.email,
         }),
       });
 
