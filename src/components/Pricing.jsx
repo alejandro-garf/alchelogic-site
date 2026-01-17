@@ -86,7 +86,7 @@ export default function Pricing() {
 
             {/* CTA */}
             <a
-              href="#contact"
+              href="/#contact"
               className="block w-full bg-violet-600 hover:bg-violet-700 hover:scale-110 text-white py-4 rounded-xl font-semibold text-center mt-8 transition-all duration-300 shadow-lg shadow-violet-600/25"
             >
               Get Started

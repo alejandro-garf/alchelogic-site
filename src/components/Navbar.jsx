@@ -30,14 +30,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <span className="text-2xl font-bold bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent cursor-pointer tracking-tight">
+          <a href="/" className="text-2xl font-bold bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent cursor-pointer tracking-tight">
             {"{Alchelogic}"}
-          </span>
+          </a>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             <a
-              href="#about"
+              href="/#about"
               className={`text-sm font-medium transition-all duration-300 hover:scale-110 ${
                 isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}
@@ -61,7 +61,7 @@ export default function Navbar() {
               Pricing
             </a>
             <a
-              href="#contact"
+              href="/#contact"
               className={`text-sm font-medium transition-all duration-300 hover:scale-110 ${
                 isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}
@@ -83,7 +83,7 @@ export default function Navbar() {
             </button>
 
             <a
-              href="#contact"
+              href="/#contact"
               className="bg-violet-600 hover:bg-violet-700 hover:scale-110 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 shadow-lg shadow-violet-600/25"
             >
               Get Protected
@@ -122,7 +122,7 @@ export default function Navbar() {
         >
           <div className="flex flex-col items-center justify-center h-full gap-8">
             <a
-              href="#about"
+              href="/#about"
               className={`text-2xl font-medium transition-all duration-300 hover:scale-110 ${
                 isDark ? 'text-white hover:text-violet-400' : 'text-gray-900 hover:text-violet-600'
               }`}
@@ -149,7 +149,7 @@ export default function Navbar() {
               Pricing
             </a>
             <a
-              href="#contact"
+              href="/#contact"
               className={`text-2xl font-medium transition-all duration-300 hover:scale-110 ${
                 isDark ? 'text-white hover:text-violet-400' : 'text-gray-900 hover:text-violet-600'
               }`}
@@ -158,7 +158,7 @@ export default function Navbar() {
               Contact
             </a>
             <a
-              href="#contact"
+              href="/#contact"
               className="bg-violet-600 hover:bg-violet-700 hover:scale-110 text-white px-8 py-3 rounded-lg font-medium mt-4 transition-all duration-300"
               onClick={() => setIsOpen(false)}
             >

@@ -336,7 +336,7 @@ export default function Services() {
 
                           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                             <a
-                              href="#pricing"
+                              href="/pricing"
                               className="inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
                               onClick={(e) => e.stopPropagation()}
                             >
@@ -344,7 +344,7 @@ export default function Services() {
                               <ArrowRight className="w-5 h-5" />
                             </a>
                             <a
-                              href="#contact"
+                              href="/#contact"
                               className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 border-2 ${
                                 isDark
                                   ? 'border-gray-600 text-gray-300 hover:border-violet-500 hover:text-violet-400'
