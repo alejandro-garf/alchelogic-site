@@ -71,7 +71,7 @@ export default function Hero() {
               <p className={`text-sm sm:text-base md:text-lg font-semibold leading-relaxed ${
                 isDark ? 'text-gray-100' : 'text-gray-800'
               }`}>
-                Complete cybersecurity solutions for nonprofits and small businesses.
+                Complete cybersecurity & software solutions for nonprofits and small businesses.
               </p>
               <p className={`text-xs sm:text-sm md:text-base font-semibold mt-1 ${
                 isDark ? 'text-violet-400' : 'text-violet-600'

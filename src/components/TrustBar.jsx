@@ -27,7 +27,7 @@ export default function TrustBar() {
             <div
               key={index}
               className={`opacity-50 hover:opacity-100 transition-all duration-300 text-base sm:text-lg md:text-xl font-semibold tracking-wide hover:scale-110 ${
-                isDark ? 'text-gray-500' : 'text-gray-600'
+                isDark ? 'text-gray-400' : 'text-gray-700'
               }`}
             >
               {partner.name}

@@ -4,9 +4,9 @@ import AnimatedBackground from '@/components/AnimatedBackground';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
-import Services from '@/components/Services';
+import ServicesOverview from '@/components/ServicesOverview';
 import Features from '@/components/Features';
-import Pricing from '@/components/Pricing';
+import PricingOverview from '@/components/PricingOverview';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -20,9 +20,9 @@ export default function Home() {
         <Hero />
         <About />
         <Stats />
-        <Services />
+        <ServicesOverview />
         <Features />
-        <Pricing />
+        <PricingOverview />
         <Contact />
         <Footer />
       </main>

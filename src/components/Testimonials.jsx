@@ -26,7 +26,7 @@ export default function Testimonials() {
             Trusted by Growing Businesses
           </h2>
           <p className={`mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto ${
-            isDark ? 'text-gray-400' : 'text-gray-600'
+            isDark ? 'text-gray-300' : 'text-gray-700'
           }`}>
             See what our clients have to say about working with us
           </p>
@@ -53,7 +53,7 @@ export default function Testimonials() {
               "Alchelogic gave us Fortune 500-level security at a price we could actually afford. Game changer for our nonprofit."
             </blockquote>
             <p className={`text-center mt-8 font-medium ${
-              isDark ? 'text-gray-400' : 'text-gray-600'
+              isDark ? 'text-gray-300' : 'text-gray-700'
             }`}>
               — IT Director, Regional Healthcare Nonprofit
             </p>
