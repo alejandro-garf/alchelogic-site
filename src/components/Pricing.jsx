@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Check, ArrowRight, Shield, Search, Bot, Globe, Server, GraduationCap, Code, FileCheck, Users, Fingerprint, Eye, Layout, Wrench } from 'lucide-react';
+import { Check, ArrowRight, Shield, Search, Bot, Globe, Server, GraduationCap, Code, FileCheck, Users, Eye, Layout, Wrench } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
 const pricingCategories = [
@@ -13,14 +13,14 @@ const pricingCategories = [
         icon: Shield,
         name: 'Penetration Testing',
         description: 'Comprehensive security testing of your systems',
-        pricing: 'Starting at $2,500',
+        pricing: '$50 flat',
         features: ['Network testing', 'Web app testing', 'Social engineering', 'Detailed report'],
       },
       {
         icon: Search,
-        name: 'Security Assessments',
+        name: 'Security & Vulnerability Assessments',
         description: 'Vulnerability scanning and risk analysis',
-        pricing: 'Starting at $1,500',
+        pricing: '$40 flat',
         features: ['Vulnerability scans', 'Configuration review', 'Risk prioritization', 'Remediation plan'],
       },
       {
@@ -32,11 +32,11 @@ const pricingCategories = [
         popular: true,
       },
       {
-        icon: Fingerprint,
-        name: 'Forensic Investigations',
-        description: 'Incident investigation and evidence collection',
-        pricing: 'Starting at $3,000',
-        features: ['Incident response', 'Evidence preservation', 'Root cause analysis', 'Expert reporting'],
+        icon: Eye,
+        name: 'OSINT Security Solutions',
+        description: 'Open-source security tool implementation',
+        pricing: 'Starting at $14.99/month',
+        features: ['Tool selection', 'Professional setup', 'Configuration', 'Training & docs'],
       },
     ],
   },
@@ -46,30 +46,30 @@ const pricingCategories = [
     services: [
       {
         icon: Bot,
-        name: 'AI Workflow Automation',
+        name: 'AI Workflow Integration & Automation',
         description: 'Automate processes with AI integration',
-        pricing: 'Starting at $2,000',
+        pricing: 'Starting at $19.99/month',
         features: ['Workflow analysis', 'Custom AI tools', 'Integration', 'Training included'],
       },
       {
         icon: Layout,
-        name: 'Website Development',
+        name: 'Website & Platform Development',
         description: 'Modern, secure website and platform development',
-        pricing: 'Starting at $3,000',
+        pricing: '$30 flat',
         features: ['Custom design', 'Mobile responsive', 'SEO optimized', 'Security built-in'],
       },
       {
         icon: Server,
         name: 'Cloud Migrations',
         description: 'Secure migration to AWS, Azure, or GCP',
-        pricing: 'Starting at $2,500',
+        pricing: '$150 flat',
         features: ['Migration planning', 'Secure transfer', 'Architecture design', 'Optimization'],
       },
       {
         icon: Code,
-        name: 'Custom Software',
+        name: 'Custom Proprietary Software',
         description: 'Tailored software solutions for your business',
-        pricing: 'Starting at $5,000',
+        pricing: 'Starting at $19.99/month',
         features: ['Requirements analysis', 'Custom development', 'Integration', 'Ongoing support'],
       },
     ],
@@ -80,31 +80,24 @@ const pricingCategories = [
     services: [
       {
         icon: FileCheck,
-        name: 'Compliance Support',
+        name: 'Compliance & Regulatory Support',
         description: 'HIPAA, PCI-DSS, SOC 2, and more',
-        pricing: 'Starting at $2,000',
+        pricing: '$50 flat',
         features: ['Gap analysis', 'Policy development', 'Audit preparation', 'Ongoing monitoring'],
       },
       {
         icon: GraduationCap,
-        name: 'Security Training',
+        name: 'Cybersecurity Awareness Training',
         description: 'Cybersecurity awareness for your team',
-        pricing: 'Starting at $500',
+        pricing: '$100/session',
         features: ['Phishing simulations', 'Interactive modules', 'Role-based content', 'Progress tracking'],
       },
       {
         icon: Users,
-        name: 'Background Checks',
+        name: 'Digital Footprint Background Checks',
         description: 'Digital footprint analysis for candidates',
-        pricing: 'Starting at $250/person',
+        pricing: '$10/person',
         features: ['OSINT research', 'Social media review', 'Risk assessment', 'Confidential report'],
-      },
-      {
-        icon: Eye,
-        name: 'OSINT Solutions',
-        description: 'Open-source security tool implementation',
-        pricing: 'Starting at $1,000',
-        features: ['Tool selection', 'Professional setup', 'Configuration', 'Training & docs'],
       },
     ],
   },
@@ -145,7 +138,7 @@ export default function Pricing() {
             Transparent & Flexible Pricing
           </h1>
           <p className={`mt-4 text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${
-            isDark ? 'text-gray-400' : 'text-gray-600'
+            isDark ? 'text-gray-300' : 'text-gray-700'
           }`}>
             We work with your budget. Every business is different, and we believe security and technology solutions should be accessible to all.
           </p>
@@ -170,16 +163,24 @@ export default function Pricing() {
                 Need a Custom Plan?
               </h2>
             </div>
-            <p className={`text-base sm:text-lg max-w-2xl mx-auto mb-6 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-              Every organization has unique needs. Let's create a tailored security and technology strategy that fits your specific requirements and budget.
+            <p className={`text-base sm:text-lg max-w-2xl mx-auto mb-4 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+              Every organization has unique needs. Let&apos;s create a tailored security and technology strategy that fits your specific requirements and budget.
             </p>
-            <a
-              href="/#contact"
-              className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-violet-600/25"
-            >
-              Get a Custom Quote
-              <ArrowRight className="w-5 h-5" />
-            </a>
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
+              isDark ? 'bg-green-500/20 text-green-400' : 'bg-green-100 text-green-700'
+            }`}>
+              <Check className="w-5 h-5" />
+              <span className="font-semibold">Bundle multiple services & save up to 20%</span>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href="/#contact"
+                className="inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-violet-600/25"
+              >
+                Get a Custom Quote
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </motion.div>
 
@@ -197,7 +198,7 @@ export default function Pricing() {
               <h2 className={`text-2xl sm:text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 {category.title}
               </h2>
-              <p className={`mt-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              <p className={`mt-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                 {category.description}
               </p>
             </div>
@@ -236,7 +237,7 @@ export default function Pricing() {
                     <h3 className={`text-lg font-bold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                       {service.name}
                     </h3>
-                    <p className={`text-sm mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <p className={`text-sm mb-4 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                       {service.description}
                     </p>
 
@@ -250,7 +251,7 @@ export default function Pricing() {
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center gap-2">
                           <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          <span className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                          <span className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                             {feature}
                           </span>
                         </li>
@@ -291,7 +292,7 @@ export default function Pricing() {
           <h2 className={`text-2xl sm:text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
             Ready to Get Started?
           </h2>
-          <p className={`text-base sm:text-lg max-w-2xl mx-auto mb-6 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          <p className={`text-base sm:text-lg max-w-2xl mx-auto mb-6 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
             Schedule a free consultation to discuss your needs. We'll work with your budget to find the right solution.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

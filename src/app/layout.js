@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Alchelogic | Enterprise Security. Small Business Pricing.",
-  description: "Complete cybersecurity stack for nonprofits and small businesses. 24/7 protection without the enterprise price tag.",
+  title: "Alchelogic | Cybersecurity & Software Solutions",
+  description: "Complete cybersecurity & software solutions for nonprofits and small businesses. 24/7 protection without the enterprise price tag.",
 };
 
 export const viewport = {

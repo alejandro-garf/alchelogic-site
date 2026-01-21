@@ -33,7 +33,7 @@ export default function PricingOverview() {
             Transparent & Flexible
           </h2>
           <p className={`mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto ${
-            isDark ? 'text-gray-400' : 'text-gray-600'
+            isDark ? 'text-gray-300' : 'text-gray-700'
           }`}>
             We work with your budget. Security and technology solutions shouldn't break the bank.
           </p>
@@ -63,7 +63,7 @@ export default function PricingOverview() {
               ))}
             </ul>
 
-            <p className={`text-sm italic mb-6 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+            <p className={`text-sm italic mb-6 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
               Every business is different. Let's find the right solution for yours.
             </p>
 

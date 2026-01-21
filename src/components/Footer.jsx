@@ -123,8 +123,8 @@ export default function Footer() {
             }`}>
               {"{Alchelogic}"}
             </span>
-            <p className={`mt-2 text-xs sm:text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              Enterprise Security. Small Business Pricing.
+            <p className={`mt-2 text-xs sm:text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+              Cybersecurity & Software Solutions
             </p>
           </div>
 
@@ -220,7 +220,7 @@ export default function Footer() {
         <div className={`border-t mt-12 pt-8 text-center ${
           isDark ? 'border-gray-800/50' : 'border-gray-200'
         }`}>
-          <p className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
+          <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>
             &copy; 2026 Alchelogic. All rights reserved.
           </p>
         </div>

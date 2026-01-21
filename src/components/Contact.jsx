@@ -174,7 +174,7 @@ export default function Contact() {
               Ready to Secure Your Business?
             </h2>
             <p className={`mt-4 text-base sm:text-lg md:text-xl leading-relaxed ${
-              isDark ? 'text-gray-400' : 'text-gray-600'
+              isDark ? 'text-gray-300' : 'text-gray-700'
             }`}>
               Let's talk about your needs and see how we can help.
             </p>
@@ -202,7 +202,7 @@ export default function Contact() {
                   Schedule a Free Consultation
                 </h3>
               </div>
-              <p className={`text-sm sm:text-base mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              <p className={`text-sm sm:text-base mb-4 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                 Book a free 30-minute consultation at a time that works for you. No obligation, no pressure, just a conversation about your security and IT needs.
               </p>
               <a

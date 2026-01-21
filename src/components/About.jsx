@@ -8,7 +8,7 @@ const values = [
   {
     icon: Target,
     title: 'Our Mission',
-    description: 'To make enterprise-grade cybersecurity accessible to every small business and nonprofit, regardless of budget.',
+    description: 'To make enterprise-grade cybersecurity & software solutions accessible to every small business and nonprofit, regardless of budget.',
   },
   {
     icon: Users,

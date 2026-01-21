@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Shield, Search, Bot, Globe, Server, GraduationCap, Code, ArrowRight } from 'lucide-react';
+import { Shield, Search, Bot, Globe, Server, Layout, Code, ArrowRight } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
 const services = [
@@ -31,9 +31,14 @@ const services = [
     description: 'Secure cloud infrastructure transitions.',
   },
   {
+    icon: Layout,
+    title: 'Web Development',
+    description: 'Professional websites built for your business.',
+  },
+  {
     icon: Code,
-    title: 'Custom Solutions',
-    description: 'Tailored software and security.',
+    title: 'Custom Software',
+    description: 'Proprietary applications engineered for your needs.',
   },
 ];
 
@@ -73,8 +78,8 @@ export default function ServicesOverview() {
           >
             What We Offer
           </h2>
-          <p className={`mt-4 text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            From penetration testing to custom software solutions, we've got your security and technology needs covered.
+          <p className={`mt-4 text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+            From penetration testing to professional websites and custom-built software, we've got your security and technology needs covered.
           </p>
         </motion.div>
 
@@ -83,7 +88,7 @@ export default function ServicesOverview() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
         >
           {services.map((service, index) => {
             const Icon = service.icon;
@@ -105,7 +110,7 @@ export default function ServicesOverview() {
                 >
                   {service.title}
                 </h3>
-                <p className={`text-xs sm:text-sm leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                <p className={`text-xs sm:text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                   {service.description}
                 </p>
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />

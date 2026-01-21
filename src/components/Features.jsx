@@ -112,7 +112,7 @@ export default function Features() {
               </h3>
               <p
                 className={`text-lg leading-relaxed mb-6 ${
-                  isDark ? 'text-gray-300' : 'text-gray-600'
+                  isDark ? 'text-gray-300' : 'text-gray-700'
                 }`}
               >
                 {feature.description}
@@ -122,7 +122,7 @@ export default function Features() {
                   <li
                     key={bulletIndex}
                     className={`flex items-center text-base ${
-                      isDark ? 'text-gray-300' : 'text-gray-600'
+                      isDark ? 'text-gray-300' : 'text-gray-700'
                     }`}
                   >
                     <Check className="w-5 h-5 mr-3 flex-shrink-0 text-violet-500" />

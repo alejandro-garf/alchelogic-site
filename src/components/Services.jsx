@@ -191,22 +191,22 @@ const services = [
     id: 'web-development',
     icon: Layout,
     title: 'Website & Platform Development',
-    tagline: 'Build Your Digital Presence',
-    shortDesc: 'Create or redesign your website or web platform with modern, secure, and user-friendly solutions.',
+    tagline: 'We Build Your Digital Presence',
+    shortDesc: 'Let us design and build a professional website or web platform for your company—modern, secure, and tailored to your brand.',
     features: [
-      'Custom website design',
-      'Platform development',
+      'Custom website design & development',
+      'Web application platforms',
       'E-commerce solutions',
       'Security-first approach',
     ],
     expandedFeatures: [
       {
-        title: 'Modern Design',
-        desc: 'Clean, responsive designs that look great on any device and reflect your brand identity.',
+        title: 'Built for Your Business',
+        desc: "We create websites from the ground up, designed specifically for your company's goals, audience, and brand identity.",
       },
       {
-        title: 'Custom Development',
-        desc: 'From simple websites to complex web applications, we build solutions tailored to your exact requirements.',
+        title: 'Full-Stack Development',
+        desc: 'From landing pages to complex web applications, our team handles frontend, backend, and everything in between.',
       },
       {
         title: 'E-commerce Ready',
@@ -283,23 +283,23 @@ const services = [
   {
     id: 'custom-software',
     icon: Code,
-    title: 'Custom Software Solutions',
-    tagline: 'Built for Your Business',
-    shortDesc: 'Custom-engineered software solutions designed to solve your unique business challenges.',
+    title: 'Custom Proprietary Software',
+    tagline: 'Your Vision, Built by Us',
+    shortDesc: "We develop custom proprietary software and applications tailored specifically to your company's unique workflows and requirements.",
     features: [
-      'Custom application development',
-      'System integrations',
-      'API development',
+      'Proprietary application development',
+      'Internal tools & dashboards',
+      'System integrations & APIs',
       'Ongoing maintenance & support',
     ],
     expandedFeatures: [
       {
         title: 'Requirements Analysis',
-        desc: 'Deep dive into your business processes to understand exactly what you need and design the optimal solution.',
+        desc: 'We work closely with your team to understand your business processes and design the optimal software solution.',
       },
       {
-        title: 'Custom Development',
-        desc: 'Purpose-built applications using modern technologies and secure development practices.',
+        title: 'Proprietary Development',
+        desc: "Software built exclusively for your company—you own it, it's yours. No licensing fees, no third-party dependencies.",
       },
       {
         title: 'Integration',
@@ -374,41 +374,10 @@ const services = [
     ],
   },
   {
-    id: 'forensics',
-    icon: Fingerprint,
-    title: 'Forensic Investigations',
-    tagline: 'Uncover the Truth',
-    shortDesc: 'Professional digital forensics to investigate security incidents, data breaches, and suspicious activities.',
-    features: [
-      'Incident investigation',
-      'Evidence collection & preservation',
-      'Root cause analysis',
-      'Expert reporting',
-    ],
-    expandedFeatures: [
-      {
-        title: 'Incident Response',
-        desc: 'Rapid response to security incidents to contain damage, preserve evidence, and begin investigation.',
-      },
-      {
-        title: 'Evidence Handling',
-        desc: 'Forensically sound collection and preservation of digital evidence that can withstand legal scrutiny.',
-      },
-      {
-        title: 'Analysis & Investigation',
-        desc: 'Deep technical analysis to determine what happened, how it happened, and who was responsible.',
-      },
-      {
-        title: 'Detailed Reporting',
-        desc: 'Comprehensive reports suitable for internal review, legal proceedings, or regulatory reporting.',
-      },
-    ],
-  },
-  {
     id: 'background-checks',
     icon: Users,
     title: 'Digital Footprint Background Checks',
-    tagline: 'Know Who You\'re Hiring',
+    tagline: "Know Who You're Hiring",
     shortDesc: 'Comprehensive digital footprint analysis for potential employees to identify risks before they join your team.',
     features: [
       'Social media analysis',
@@ -419,7 +388,7 @@ const services = [
     expandedFeatures: [
       {
         title: 'Open Source Intelligence',
-        desc: 'Thorough analysis of publicly available information to build a complete picture of a candidate\'s digital presence.',
+        desc: "Thorough analysis of publicly available information to build a complete picture of a candidate's digital presence.",
       },
       {
         title: 'Social Media Review',
@@ -427,7 +396,7 @@ const services = [
       },
       {
         title: 'Risk Assessment',
-        desc: 'Identification of potential security risks, reputation concerns, or inconsistencies in a candidate\'s background.',
+        desc: "Identification of potential security risks, reputation concerns, or inconsistencies in a candidate's background.",
       },
       {
         title: 'Confidential Reports',
@@ -478,8 +447,8 @@ export default function Services() {
           >
             Complete Security & Technology Solutions
           </h1>
-          <p className={`mt-4 text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            From offensive security testing to custom software development, we provide end-to-end solutions to protect and empower your business.
+          <p className={`mt-4 text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+            From offensive security testing to building professional websites and custom proprietary software, we provide end-to-end solutions to protect and empower your business.
           </p>
         </motion.div>
 
@@ -531,14 +500,14 @@ export default function Services() {
                       }`}
                     >
                       {isExpanded ? (
-                        <ChevronUp className={`w-5 h-5 ${isDark ? 'text-gray-400' : 'text-gray-600'}`} />
+                        <ChevronUp className={`w-5 h-5 ${isDark ? 'text-gray-300' : 'text-gray-700'}`} />
                       ) : (
-                        <ChevronDown className={`w-5 h-5 ${isDark ? 'text-gray-400' : 'text-gray-600'}`} />
+                        <ChevronDown className={`w-5 h-5 ${isDark ? 'text-gray-300' : 'text-gray-700'}`} />
                       )}
                     </button>
                   </div>
 
-                  <p className={`mt-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                  <p className={`mt-4 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                     {service.shortDesc}
                   </p>
 
@@ -547,7 +516,7 @@ export default function Services() {
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center gap-2">
                           <Check className="w-4 h-4 text-violet-500 flex-shrink-0" />
-                          <span className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                          <span className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                             {feature}
                           </span>
                         </li>
@@ -580,7 +549,7 @@ export default function Services() {
                                   {feature.title}
                                 </h4>
                               </div>
-                              <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                              <p className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                                 {feature.desc}
                               </p>
                             </div>
@@ -624,8 +593,8 @@ export default function Services() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mt-16"
         >
-          <p className={`text-lg mb-6 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-            Don't see exactly what you need? Let's talk about a custom solution.
+          <p className={`text-lg mb-6 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+            Don&apos;t see exactly what you need? Let&apos;s talk about a custom solution.
           </p>
           <a
             href="/#contact"

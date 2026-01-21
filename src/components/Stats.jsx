@@ -56,7 +56,7 @@ export default function Stats() {
           </h2>
           <p
             className={`mt-4 text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${
-              isDark ? 'text-gray-400' : 'text-gray-600'
+              isDark ? 'text-gray-300' : 'text-gray-700'
             }`}
           >
             We keep your online operations safe so you can focus on serving the community and running your business, all without breaking the bank.
@@ -83,7 +83,7 @@ export default function Stats() {
               <div className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent">
                 {stat.value}
               </div>
-              <p className={`mt-3 sm:mt-4 text-sm sm:text-base ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+              <p className={`mt-3 sm:mt-4 text-sm sm:text-base ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                 {stat.description}
               </p>
             </motion.div>
