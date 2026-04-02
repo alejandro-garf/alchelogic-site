@@ -14,7 +14,6 @@ import PricingOverview from '@/components/PricingOverview';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import StickyScanner from '@/components/StickyScanner';
 
 export default function Home() {
   return (
@@ -35,7 +34,6 @@ export default function Home() {
         <Contact />
         <Footer />
       </main>
-      <StickyScanner />
     </>
   );
 }

@@ -103,7 +103,7 @@ export default function Contact() {
                 href="https://calendly.com/alchelogic/alchelogic"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-full gap-2 bg-violet-600 hover:bg-violet-500 hover:scale-105 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25"
+                className="inline-flex items-center justify-center w-full gap-2 bg-violet-600 hover:bg-violet-500 hover:scale-105 active:scale-95 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25"
               >
                 <Calendar className="w-5 h-5" />
                 Schedule Now
@@ -204,7 +204,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-violet-600 hover:bg-violet-500 hover:scale-105 text-white py-3 rounded-lg font-semibold text-sm transition-all duration-300 shadow-lg shadow-violet-600/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-violet-600 hover:bg-violet-500 hover:scale-105 active:scale-95 text-white py-3 rounded-lg font-semibold text-sm transition-all duration-300 shadow-lg shadow-violet-600/25 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>

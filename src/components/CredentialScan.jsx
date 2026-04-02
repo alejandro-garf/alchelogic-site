@@ -150,7 +150,7 @@ export default function CredentialScan({ compact = false }) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 hover:scale-105 text-white py-3 rounded-lg font-semibold text-sm transition-all duration-300 shadow-lg shadow-violet-600/25 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 hover:scale-105 active:scale-95 text-white py-3 rounded-lg font-semibold text-sm transition-all duration-300 shadow-lg shadow-violet-600/25 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Search className="w-4 h-4" />
           {isSubmitting ? 'Submitting...' : 'Run My Free Scan'}

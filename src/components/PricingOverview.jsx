@@ -91,7 +91,7 @@ export default function PricingOverview() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="#quote" className="inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-violet-600/25">
+            <a href="#quote" className="inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 active:scale-95 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-violet-600/25">
               <Calculator className="w-5 h-5" />
               Calculate My Price
             </a>

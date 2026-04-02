@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import StickyScanner from '@/components/StickyScanner';
 import { motion } from 'framer-motion';
 
 export default function AboutPage() {
@@ -29,7 +28,6 @@ export default function AboutPage() {
         <Contact />
         <Footer />
       </main>
-      <StickyScanner />
     </>
   );
 }

@@ -3,7 +3,6 @@
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import StickyScanner from '@/components/StickyScanner';
 import { motion } from 'framer-motion';
 import { ArrowRight, Clock } from 'lucide-react';
 
@@ -108,7 +107,6 @@ export default function BlogPage() {
 
         <Footer />
       </main>
-      <StickyScanner />
     </>
   );
 }

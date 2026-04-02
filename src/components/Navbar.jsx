@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const links = [
@@ -16,9 +17,20 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
+  const closeMenu = useCallback(() => setIsOpen(false), []);
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-gray-900/90 backdrop-blur-md shadow-lg shadow-black/20' : 'bg-transparent'}`}>
@@ -48,29 +60,43 @@ export default function Navbar() {
         </div>
       </div>
 
-      {isOpen && (
-        <div className="md:hidden fixed inset-0 top-16 z-40 bg-gray-900/98 backdrop-blur-md">
-          <div className="flex flex-col items-center justify-center h-full gap-8">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-2xl font-medium text-white hover:text-violet-400 transition-colors"
-                onClick={() => setIsOpen(false)}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="md:hidden fixed inset-0 top-16 z-40 bg-gray-900/98 backdrop-blur-md"
+          >
+            <div className="flex flex-col items-center justify-center h-full gap-8">
+              {links.map((link, i) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 * i, duration: 0.2 }}
+                  className="text-2xl font-medium text-white active:text-violet-400 transition-colors"
+                  onClick={closeMenu}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+              <motion.a
+                href="/free-credential-scan"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05 * links.length, duration: 0.2 }}
+                className="bg-violet-600 active:bg-violet-500 text-white px-8 py-3 rounded-lg font-semibold mt-4 transition-all duration-300"
+                onClick={closeMenu}
               >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="/free-credential-scan"
-              className="bg-violet-600 hover:bg-violet-500 text-white px-8 py-3 rounded-lg font-semibold mt-4 transition-all duration-300 hover:scale-105"
-              onClick={() => setIsOpen(false)}
-            >
-              Get Free Credential Scan
-            </a>
-          </div>
-        </div>
-      )}
+                Get Free Credential Scan
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

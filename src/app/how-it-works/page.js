@@ -3,7 +3,6 @@
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import StickyScanner from '@/components/StickyScanner';
 import { motion } from 'framer-motion';
 import { Search, FileText, Zap, MonitorCheck, BarChart3, ArrowRight } from 'lucide-react';
 
@@ -106,7 +105,6 @@ export default function HowItWorksPage() {
 
         <Footer />
       </main>
-      <StickyScanner />
     </>
   );
 }

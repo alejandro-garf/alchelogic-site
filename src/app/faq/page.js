@@ -4,7 +4,6 @@ import AnimatedBackground from '@/components/AnimatedBackground';
 import Navbar from '@/components/Navbar';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
-import StickyScanner from '@/components/StickyScanner';
 import { motion } from 'framer-motion';
 
 export default function FAQPage() {
@@ -33,7 +32,6 @@ export default function FAQPage() {
         </div>
         <Footer />
       </main>
-      <StickyScanner />
     </>
   );
 }

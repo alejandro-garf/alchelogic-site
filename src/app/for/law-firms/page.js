@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import QuoteCalculator from '@/components/QuoteCalculator';
 import CredentialScan from '@/components/CredentialScan';
-import StickyScanner from '@/components/StickyScanner';
 import { motion } from 'framer-motion';
 import { Scale, Check, AlertTriangle, ShieldCheck } from 'lucide-react';
 
@@ -109,7 +108,6 @@ export default function LawFirmsPage() {
         <CredentialScan />
         <Footer />
       </main>
-      <StickyScanner />
     </>
   );
 }

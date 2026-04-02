@@ -42,7 +42,7 @@ export default function Features() {
           >
             <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
               <div className="relative rounded-2xl border border-gray-700/50 overflow-hidden hover:scale-105 hover:shadow-2xl hover:shadow-violet-500/10 transition-all duration-500 cursor-pointer">
-                <img src={feature.image} alt={feature.label} className="w-full aspect-video object-cover object-center" />
+                <img src={feature.image} alt={feature.label} loading="lazy" className="w-full aspect-video object-cover object-center" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent" />
               </div>
             </div>
