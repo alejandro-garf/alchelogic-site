@@ -11,7 +11,7 @@ const sanitizeInput = (input) => {
 
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.length <= 254;
 
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+const WEB3FORMS_KEY = '7c02d73e-2c50-4a92-94ec-e941f1c9a16f';
 
 const whatWeFind = [
   'Leaked employee passwords on the dark web',

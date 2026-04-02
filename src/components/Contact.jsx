@@ -14,7 +14,7 @@ const isValidEmail = (email) => {
   return re.test(email) && email.length <= 254;
 };
 
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+const WEB3FORMS_KEY = '7c02d73e-2c50-4a92-94ec-e941f1c9a16f';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
