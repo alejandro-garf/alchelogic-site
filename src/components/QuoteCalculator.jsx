@@ -95,7 +95,7 @@ export default function QuoteCalculator() {
             <button
               onClick={() => isValid && setShowQuote(true)}
               disabled={!isValid}
-              className="inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 disabled:opacity-40 disabled:cursor-not-allowed text-white px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-violet-600/25 whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed text-white px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-violet-600/25 whitespace-nowrap"
             >
               <Calculator className="w-5 h-5" />
               Calculate

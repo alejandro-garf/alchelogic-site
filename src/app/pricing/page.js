@@ -6,7 +6,6 @@ import Pricing from '@/components/Pricing';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import StickyScanner from '@/components/StickyScanner';
 
 export default function PricingPage() {
   return (
@@ -21,7 +20,6 @@ export default function PricingPage() {
         </div>
         <Footer />
       </main>
-      <StickyScanner />
     </>
   );
 }

@@ -44,14 +44,14 @@ export default function Hero() {
         >
           <a
             href="/free-credential-scan"
-            className="inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 shadow-xl shadow-violet-600/30 hover:shadow-violet-500/40 hover:scale-105"
+            className="inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 active:scale-95 text-white px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 shadow-xl shadow-violet-600/30 hover:shadow-violet-500/40 hover:scale-105"
           >
             <Radar className="w-5 h-5" />
             Free Dark Web Scan
           </a>
           <a
             href="/free-trial"
-            className="inline-flex items-center justify-center gap-2 border-2 border-violet-500 text-violet-400 hover:text-white hover:bg-violet-600 px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(139,92,246,0.4)] hover:shadow-[0_0_25px_rgba(139,92,246,0.6)]"
+            className="inline-flex items-center justify-center gap-2 border-2 border-violet-500 text-violet-400 hover:text-white hover:bg-violet-600 active:scale-95 px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(139,92,246,0.4)] hover:shadow-[0_0_25px_rgba(139,92,246,0.6)]"
           >
             Start 7-Day Free Trial
           </a>
