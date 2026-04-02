@@ -1,6 +1,6 @@
 # Alchelogic
 
-Official website for Alchelogic — IT solutions and cybersecurity services.
+Official website for Alchelogic — Cybersecurity Solutions.
 
 ## Contact
 
