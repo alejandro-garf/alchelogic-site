@@ -1,39 +1,16 @@
 'use client';
+import { createContext, useContext } from 'react';
 
-import { createContext, useContext, useState, useEffect } from 'react';
-
-const ThemeContext = createContext();
+const ThemeContext = createContext({ isDark: true, toggleTheme: () => {} });
 
 export function ThemeProvider({ children }) {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    // Check for saved preference or system preference
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-      setIsDark(saved === 'dark');
-    } else {
-      setIsDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  }, [isDark]);
-
-  const toggleTheme = () => setIsDark(!isDark);
-
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <ThemeContext.Provider value={{ isDark: true, toggleTheme: () => {} }}>
       {children}
     </ThemeContext.Provider>
   );
 }
 
 export function useTheme() {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
+  return useContext(ThemeContext);
 }

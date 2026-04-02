@@ -2,358 +2,216 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Calendar } from 'lucide-react';
-import { useTheme } from '@/context/ThemeContext';
+import { Mail, Phone, Calendar, ArrowRight, Check } from 'lucide-react';
 
-// Input sanitization to prevent XSS attacks
 const sanitizeInput = (input) => {
   if (typeof input !== 'string') return '';
-  return input
-    .replace(/[<>]/g, '') // Remove angle brackets to prevent HTML injection
-    .replace(/javascript:/gi, '') // Remove javascript: protocol
-    .replace(/on\w+=/gi, '') // Remove event handlers like onclick=, onerror=
-    .replace(/data:/gi, '') // Remove data: protocol
-    .trim();
+  return input.replace(/[<>]/g, '').replace(/javascript:/gi, '').replace(/on\w+=/gi, '').replace(/data:/gi, '').trim();
 };
 
-// Email validation regex
 const isValidEmail = (email) => {
-  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-  return emailRegex.test(email) && email.length <= 254;
+  const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  return re.test(email) && email.length <= 254;
 };
 
-// Validation constraints
-const CONSTRAINTS = {
-  name: { maxLength: 100, minLength: 2 },
-  email: { maxLength: 254, minLength: 5 },
-  company: { maxLength: 100 },
-  message: { maxLength: 2000 },
-};
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
 export default function Contact() {
-  const { isDark } = useTheme();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const validateField = (name, value) => {
-    const constraint = CONSTRAINTS[name];
-    if (!constraint) return null;
-
-    if (name === 'name') {
-      if (value.length < constraint.minLength) {
-        return `Name must be at least ${constraint.minLength} characters`;
-      }
-      if (value.length > constraint.maxLength) {
-        return `Name must be less than ${constraint.maxLength} characters`;
-      }
-    }
-
-    if (name === 'email') {
-      if (value.length < constraint.minLength) {
-        return 'Please enter a valid email address';
-      }
-      if (!isValidEmail(value)) {
-        return 'Please enter a valid email address';
-      }
-    }
-
-    if (name === 'company' && value.length > constraint.maxLength) {
-      return `Company name must be less than ${constraint.maxLength} characters`;
-    }
-
-    if (name === 'message' && value.length > constraint.maxLength) {
-      return `Message must be less than ${constraint.maxLength} characters`;
-    }
-
-    return null;
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const sanitizedValue = sanitizeInput(value);
-
-    // Enforce max length at input level
-    const constraint = CONSTRAINTS[name];
-    const truncatedValue = constraint?.maxLength
-      ? sanitizedValue.slice(0, constraint.maxLength)
-      : sanitizedValue;
-
-    setFormData({ ...formData, [name]: truncatedValue });
-
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors({ ...errors, [name]: null });
-    }
+    const truncated = sanitizeInput(value).slice(0, name === 'message' ? 500 : 100);
+    setFormData({ ...formData, [name]: truncated });
+    if (errors[name]) setErrors({ ...errors, [name]: null });
   };
 
-  const validateForm = () => {
+  const validate = () => {
     const newErrors = {};
-
-    Object.keys(formData).forEach((field) => {
-      if (field === 'name' || field === 'email') {
-        const error = validateField(field, formData[field]);
-        if (error) newErrors[field] = error;
-      }
-    });
-
+    if (!formData.name || formData.name.length < 2) newErrors.name = 'Please enter your name';
+    if (!isValidEmail(formData.email)) newErrors.email = 'Please enter a valid email';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validate before submitting
-    if (!validateForm()) {
-      return;
-    }
-
+    if (!validate()) return;
     setIsSubmitting(true);
-
     try {
-      // Sanitize all inputs before sending
-      const sanitizedData = {
-        name: sanitizeInput(formData.name),
-        email: sanitizeInput(formData.email),
-        company: sanitizeInput(formData.company),
-        message: sanitizeInput(formData.message),
-      };
-
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: sanitizedData.name,
-          email: sanitizedData.email,
-          company: sanitizedData.company,
-          message: sanitizedData.message,
+          access_key: WEB3FORMS_KEY,
+          name: sanitizeInput(formData.name),
+          email: sanitizeInput(formData.email),
+          company: sanitizeInput(formData.company) || 'Not provided',
+          message: sanitizeInput(formData.message) || 'Not provided',
+          subject: `New inquiry | ${sanitizeInput(formData.company) || sanitizeInput(formData.name)} | Alchelogic`,
+          replyto: sanitizeInput(formData.email),
         }),
       });
-
-      if (response.ok) {
+      const result = await response.json();
+      if (result.success) {
         setSubmitted(true);
         setFormData({ name: '', email: '', company: '', message: '' });
-        setErrors({});
       } else {
-        setErrors({ form: 'Something went wrong. Please try again.' });
+        setErrors({ form: 'Something went wrong. Email info@alchelogic.com directly.' });
       }
-    } catch (error) {
-      setErrors({ form: 'Something went wrong. Please try again.' });
+    } catch {
+      setErrors({ form: 'Something went wrong. Email info@alchelogic.com directly.' });
     }
-
     setIsSubmitting(false);
   };
 
   return (
     <section id="contact" className="py-16 sm:py-24 relative">
-
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <span className="inline-block text-sm font-semibold tracking-widest uppercase text-violet-400 mb-3">Get Started</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">Ready to Get Protected?</h2>
+          <p className="mt-4 text-base sm:text-lg max-w-xl mx-auto text-gray-400">
+            Drop your info and we'll reach out within one business day. Or book a call directly.
+          </p>
+        </motion.div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-          {/* Left - Info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="space-y-5"
           >
-            <span className="inline-block text-sm font-semibold tracking-widest uppercase text-violet-500 mb-3">
-              Get Started
-            </span>
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight ${
-              isDark ? 'text-white' : 'text-gray-900'
-            }`}>
-              Ready to Secure Your Business?
-            </h2>
-            <p className={`mt-4 text-base sm:text-lg md:text-xl leading-relaxed ${
-              isDark ? 'text-gray-300' : 'text-gray-700'
-            }`}>
-              Let's talk about your needs and see how we can help.
-            </p>
-
-            <div className="mt-6 sm:mt-8 space-y-4">
-              <div className={`flex items-center ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                <Mail className={`w-5 h-5 mr-3 flex-shrink-0 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} />
-                <span>info@alchelogic.com</span>
+            <div className="p-6 rounded-2xl border border-violet-500/30 bg-violet-500/5 ring-1 ring-violet-500/10">
+              <div className="flex items-center gap-3 mb-3">
+                <Calendar className="w-6 h-6 text-violet-400" />
+                <h3 className="text-lg font-bold text-white">Book a Free 30-Min Call</h3>
               </div>
-              <div className={`flex items-center ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                <Phone className={`w-5 h-5 mr-3 flex-shrink-0 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} />
-                <span>(650) 436-3490</span>
-              </div>
-            </div>
-
-            {/* Calendly Booking Section */}
-            <div className={`mt-8 sm:mt-10 p-5 sm:p-6 rounded-xl sm:rounded-2xl border ${
-              isDark
-                ? 'bg-gray-800/50 border-gray-700/50 backdrop-blur-sm'
-                : 'bg-violet-50 border-violet-100'
-            }`}>
-              <div className="flex items-center gap-3 mb-2">
-                <Calendar className={`w-6 h-6 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} />
-                <h3 className={`text-lg sm:text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                  Schedule a Free Consultation
-                </h3>
-              </div>
-              <p className={`text-sm sm:text-base mb-4 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                Book a free 30-minute consultation at a time that works for you. No obligation, no pressure, just a conversation about your security and IT needs.
-              </p>
+              <p className="text-sm mb-4 text-gray-400">We'll walk through your setup, answer questions, and tell you your exact monthly cost. No pitch, no pressure.</p>
               <a
                 href="https://calendly.com/alchelogic/alchelogic"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-full sm:w-auto bg-violet-600 hover:bg-violet-700 hover:scale-105 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25"
+                className="inline-flex items-center justify-center w-full gap-2 bg-violet-600 hover:bg-violet-500 hover:scale-105 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25"
               >
-                <Calendar className="w-5 h-5 mr-2" />
-                Book Free Consultation
+                <Calendar className="w-5 h-5" />
+                Schedule Now
               </a>
+            </div>
+
+            <div className="p-6 rounded-2xl border border-gray-700/50 bg-gray-800/20">
+              <h3 className="text-base font-bold text-white mb-1">Free Dark Web Scan</h3>
+              <p className="text-sm mb-4 text-gray-400">Find out if your credentials are already exposed. Free scan, results in 24 hours.</p>
+              <a href="/free-credential-scan" className="inline-flex items-center gap-2 text-sm font-semibold text-violet-400 hover:text-violet-300 transition-all duration-200 hover:gap-3">
+                Request your free scan <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+
+            <div className="p-6 rounded-2xl border border-gray-700/50 bg-gray-800/20">
+              <h3 className="text-base font-bold text-white mb-1">7-Day Free Trial</h3>
+              <p className="text-sm mb-4 text-gray-400">Get the full security stack on every device. No credit card, no contracts.</p>
+              <a href="/free-trial" className="inline-flex items-center gap-2 text-sm font-semibold text-violet-400 hover:text-violet-300 transition-all duration-200 hover:gap-3">
+                Start your free trial <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+
+            <div className="space-y-3 pt-2">
+              <div className="flex items-center gap-3 text-sm text-gray-500">
+                <Mail className="w-4 h-4" />
+                <span>info@alchelogic.com</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-gray-500">
+                <Phone className="w-4 h-4" />
+                <span>(650) 436-3490</span>
+              </div>
             </div>
           </motion.div>
 
-          {/* Right - Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className={`text-center mb-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-              <span className="text-sm font-medium">Or send us a message</span>
-            </div>
-            <form
-              onSubmit={handleSubmit}
-              className={`space-y-4 sm:space-y-5 rounded-xl sm:rounded-2xl p-5 sm:p-8 border ${
-                isDark
-                  ? 'bg-gray-800/50 border-gray-700/50 backdrop-blur-sm'
-                  : 'bg-gray-50 border-gray-200'
-              }`}
-            >
-              <div>
-                <label className={`text-sm font-medium mb-2 block ${
-                  isDark ? 'text-gray-300' : 'text-gray-700'
-                }`}>
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  maxLength={CONSTRAINTS.name.maxLength}
-                  minLength={CONSTRAINTS.name.minLength}
-                  autoComplete="name"
-                  className={`w-full border rounded-lg px-4 py-3 placeholder-gray-400 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 transition ${
-                    isDark
-                      ? 'bg-gray-900/50 border-gray-600 text-white'
-                      : 'bg-white border-gray-300 text-gray-900'
-                  } ${errors.name ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
-                  placeholder="John Smith"
-                />
-                {errors.name && (
-                  <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-                )}
+            {submitted ? (
+              <div className="rounded-2xl p-8 border border-gray-700/50 bg-gray-800/30 text-center h-full flex flex-col items-center justify-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center mx-auto"><Check className="w-6 h-6 text-violet-400" /></div>
+                <h3 className="text-xl font-bold text-white">Got it, we'll be in touch!</h3>
+                <p className="text-sm text-gray-400">Want to move faster? Book a call directly.</p>
+                <a
+                  href="https://calendly.com/alchelogic/alchelogic"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-violet-600/25"
+                >
+                  <Calendar className="w-5 h-5" />
+                  Book a Call
+                </a>
               </div>
-
-              <div>
-                <label className={`text-sm font-medium mb-2 block ${
-                  isDark ? 'text-gray-300' : 'text-gray-700'
-                }`}>
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  maxLength={CONSTRAINTS.email.maxLength}
-                  autoComplete="email"
-                  className={`w-full border rounded-lg px-4 py-3 placeholder-gray-400 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 transition ${
-                    isDark
-                      ? 'bg-gray-900/50 border-gray-600 text-white'
-                      : 'bg-white border-gray-300 text-gray-900'
-                  } ${errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
-                  placeholder="john@company.com"
-                />
-                {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-                )}
-              </div>
-
-              <div>
-                <label className={`text-sm font-medium mb-2 block ${
-                  isDark ? 'text-gray-300' : 'text-gray-700'
-                }`}>
-                  Company
-                </label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  maxLength={CONSTRAINTS.company.maxLength}
-                  autoComplete="organization"
-                  className={`w-full border rounded-lg px-4 py-3 placeholder-gray-400 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 transition ${
-                    isDark
-                      ? 'bg-gray-900/50 border-gray-600 text-white'
-                      : 'bg-white border-gray-300 text-gray-900'
-                  }`}
-                  placeholder="Acme Inc."
-                />
-              </div>
-
-              <div>
-                <label className={`text-sm font-medium mb-2 block ${
-                  isDark ? 'text-gray-300' : 'text-gray-700'
-                }`}>
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  maxLength={CONSTRAINTS.message.maxLength}
-                  className={`w-full border rounded-lg px-4 py-3 placeholder-gray-400 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 transition resize-none ${
-                    isDark
-                      ? 'bg-gray-900/50 border-gray-600 text-white'
-                      : 'bg-white border-gray-300 text-gray-900'
-                  }`}
-                  placeholder="Tell us about your security needs..."
-                />
-                <p className={`text-xs mt-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-                  {formData.message.length}/{CONSTRAINTS.message.maxLength} characters
-                </p>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-violet-600 hover:bg-violet-700 hover:scale-105 text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-violet-600/25 disabled:opacity-50 disabled:cursor-not-allowed"
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-4 rounded-2xl p-6 sm:p-8 border border-gray-700/50 bg-gray-800/20"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-
-              {errors.form && (
-                <p className="text-red-500 text-center font-semibold mt-4">
-                  {errors.form}
-                </p>
-              )}
-
-              {submitted && (
-                <p className="text-green-500 text-center font-semibold mt-4">
-                  Thanks for reaching out! We'll be in touch soon.
-                </p>
-              )}
-            </form>
+                <p className="text-sm font-bold text-white">Send Us a Message</p>
+                {[
+                  { name: 'name', label: 'Your Name', type: 'text', placeholder: 'Jane Smith', autoComplete: 'name', required: true },
+                  { name: 'email', label: 'Work Email', type: 'email', placeholder: 'jane@smithlaw.com', autoComplete: 'email', required: true },
+                  { name: 'company', label: 'Company Name', type: 'text', placeholder: 'Smith & Associates', autoComplete: 'organization', required: true },
+                ].map(({ name, label, type, placeholder, autoComplete, required }) => (
+                  <div key={name}>
+                    <label className="text-sm font-medium mb-1.5 block text-gray-300">
+                      {label} {required && <span className="text-violet-400">*</span>}
+                    </label>
+                    <input
+                      type={type}
+                      name={name}
+                      value={formData[name]}
+                      onChange={handleChange}
+                      required={required}
+                      autoComplete={autoComplete}
+                      className={`w-full border rounded-lg px-4 py-2.5 text-sm placeholder-gray-600 bg-gray-900/60 text-white focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition ${errors[name] ? 'border-red-500/60' : 'border-gray-600'}`}
+                      placeholder={placeholder}
+                    />
+                    {errors[name] && <p className="text-red-400 text-xs mt-1">{errors[name]}</p>}
+                  </div>
+                ))}
+                <div>
+                  <label className="text-sm font-medium mb-1.5 block text-gray-300">
+                    Message <span className="text-violet-400">*</span>
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={4}
+                    required
+                    className="w-full border border-gray-600 rounded-lg px-4 py-2.5 text-sm placeholder-gray-600 bg-gray-900/60 text-white focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition resize-none"
+                    placeholder="Tell us about your business, how many employees you have, and what you're looking for."
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-violet-600 hover:bg-violet-500 hover:scale-105 text-white py-3 rounded-lg font-semibold text-sm transition-all duration-300 shadow-lg shadow-violet-600/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </button>
+                {errors.form && <p className="text-red-400 text-center text-xs mt-2">{errors.form}</p>}
+                <p className="text-xs text-center text-gray-500 mt-2">We'll follow up via email within one business day.</p>
+              </form>
+            )}
           </motion.div>
         </div>
       </div>
