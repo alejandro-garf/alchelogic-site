@@ -7,7 +7,7 @@ import { ChevronDown, ArrowRight } from 'lucide-react';
 const faqs = [
   {
     q: 'How much does managed cybersecurity cost for a small business?',
-    a: 'Alchelogic charges $49.99 per seat per month — a "seat" meaning one employee or device. A 10-person office pays $499.90/month. This includes SentinelOne Complete endpoint protection, StellarCyber XDR, Coda Attack Surface Management, PDQ Patch Management, and 24/7 SOC monitoring. There are no add-ons, no setup fees, and no long-term contracts.',
+    a: 'Alchelogic charges $49.99 per seat per month. A "seat" means one employee or device. A 10-person office pays $499.90/month. This includes SentinelOne Complete endpoint protection, StellarCyber XDR, Coda Attack Surface Management, PDQ Patch Management, and 24/7 SOC monitoring. There are no add-ons, no setup fees, and no long-term contracts.',
   },
   {
     q: 'What is included in the managed cybersecurity package?',
@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: 'What is a dark web credential scan and why do I need one?',
-    a: 'A dark web credential scan searches criminal marketplaces and breach databases for usernames and passwords tied to your business email domain. When employees reuse passwords across services, a breach at one company can expose your entire organization. We offer this scan completely free — we search, compile a report of any found credentials, and send it to you within 24 hours with no obligation to become a client.',
+    a: 'A dark web credential scan searches criminal marketplaces and breach databases for usernames and passwords tied to your business email domain. When employees reuse passwords across services, a breach at one company can expose your entire organization. We offer this scan completely free. We search, compile a report of any found credentials, and send it to you within 24 hours with no obligation to become a client.',
   },
   {
     q: 'Does my dental practice need cybersecurity compliance tools?',
@@ -23,11 +23,11 @@ const faqs = [
   },
   {
     q: 'Is there a contract or minimum commitment?',
-    a: 'No contracts and no minimum seat count. Service is month-to-month and you can cancel anytime. We also offer a 7-day free trial so you can verify the tools are working in your environment before you pay anything.',
+    a: 'Our month-to-month plan has no commitment and you can cancel anytime. If you choose the 6-month or annual plan for the discounted rate, that commitment applies for the length of the billing cycle. All plans include a 7-day free trial so you can verify the tools are working in your environment before you pay anything. There is no minimum seat count on any plan.',
   },
   {
     q: 'How long does setup take?',
-    a: 'Most businesses are fully onboarded within 48 hours. We handle the deployment of all five tools remotely — you do not need to purchase hardware or schedule IT visits. Our team configures everything, verifies it is working correctly, and walks you through what to expect.',
+    a: 'Most businesses are fully onboarded within 48 hours. We handle the deployment and configuration of all five tools. Our team sets everything up, verifies it is working correctly, and walks you through what to expect.',
   },
   {
     q: 'What happens if my business gets hit with ransomware?',
@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     q: 'What is the difference between antivirus and managed endpoint detection?',
-    a: 'Traditional antivirus matches files against a database of known threats — it only catches malware that has been seen before. SentinelOne uses AI behavioral analysis to detect threats based on what they do, not what they look like. This means it catches novel attacks, zero-days, and fileless malware that antivirus completely misses. Additionally, managed EDR includes human analysts who investigate alerts and respond — antivirus just blocks and alerts with no follow-through.',
+    a: 'Traditional antivirus matches files against a database of known threats, so it only catches malware that has been seen before. SentinelOne uses AI behavioral analysis to detect threats based on what they do, not what they look like. This means it catches novel attacks, zero-days, and fileless malware that antivirus completely misses. Additionally, managed EDR includes human analysts who investigate alerts and respond. Antivirus just blocks and alerts with no follow-through.',
   },
   {
     q: 'Can cybersecurity insurance require this type of protection?',
@@ -43,7 +43,7 @@ const faqs = [
   },
   {
     q: 'Do you work with nonprofits?',
-    a: 'Yes. We were founded by people with nonprofit backgrounds and we understand budget constraints. Our pricing model — per seat, month-to-month, no minimums — was designed to be accessible to organizations that cannot commit to large enterprise contracts. Contact us directly to discuss nonprofit pricing.',
+    a: 'Yes. We were founded by people with nonprofit backgrounds and we understand budget constraints. Our pricing model (per seat, month-to-month, no minimums) was designed to be accessible to organizations that cannot commit to large enterprise contracts. Contact us directly to discuss nonprofit pricing.',
   },
 ];
 
@@ -97,7 +97,7 @@ export default function FAQ({ limit }) {
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full text-left px-6 py-4 flex items-center justify-between gap-4 hover:bg-gray-800/40 transition-colors"
               >
-                <span className="font-semibold text-white text-sm sm:text-base">{faq.q}</span>
+                <span className="font-bold text-violet-400 text-sm sm:text-base">{faq.q}</span>
                 <ChevronDown className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-200 ${openIndex === index ? 'rotate-180' : ''}`} />
               </button>
               <AnimatePresence>
@@ -109,7 +109,7 @@ export default function FAQ({ limit }) {
                     transition={{ duration: 0.25 }}
                     className="overflow-hidden"
                   >
-                    <p className="px-6 pb-5 text-sm sm:text-base text-gray-400 leading-relaxed border-t border-gray-700/50 pt-4">
+                    <p className="px-6 pb-5 text-sm sm:text-base font-bold text-white leading-relaxed border-t border-gray-700/50 pt-4">
                       {faq.a}
                     </p>
                   </motion.div>

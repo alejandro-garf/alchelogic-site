@@ -10,21 +10,21 @@ import { motion } from 'framer-motion';
 import { Scale, Check, AlertTriangle, ShieldCheck } from 'lucide-react';
 
 const risks = [
-  { title: 'Wire Fraud & Email Compromise', description: 'Law firms are the #1 target for business email compromise. Attackers intercept wire transfer instructions mid-deal — and clients lose everything.' },
+  { title: 'Wire Fraud & Email Compromise', description: 'Law firms are the #1 target for business email compromise. Attackers intercept wire transfer instructions mid-deal, and clients lose everything.' },
   { title: 'Client Confidentiality Breaches', description: 'Attorney-client privilege is your bedrock. A breach exposing client communications can expose you to bar discipline and civil liability.' },
-  { title: 'Ransomware Targeting Case Files', description: 'Attackers encrypt case files and demand payment before hearings or closings — knowing the deadline pressure forces compliance.' },
+  { title: 'Ransomware Targeting Case Files', description: 'Attackers encrypt case files and demand payment before hearings or closings, knowing the deadline pressure forces compliance.' },
   { title: 'ABA Cybersecurity Requirements', description: 'ABA Model Rule 1.6(c) requires reasonable efforts to prevent unauthorized disclosure. Most bar associations have issued formal guidance on what that means technically.' },
 ];
 
 const included = [
-  'SentinelOne Complete — stops malware before execution',
-  'StellarCyber XDR — monitors every connection on your network',
-  'Coda Attack Surface Management — finds vulnerabilities first',
-  'PDQ Patch Management — keeps all software current',
-  '24/7 SOC — human analysts watching around the clock',
-  'Remote forensics — investigate incidents immediately',
+  'SentinelOne Complete: stops malware before execution',
+  'StellarCyber XDR: monitors every connection on your network',
+  'Coda Attack Surface Management: finds vulnerabilities first',
+  'PDQ Patch Management: keeps all software current',
+  '24/7 SOC: human analysts watching around the clock',
+  'Remote forensics: investigate incidents immediately',
   'Setup & onboarding included',
-  'No contracts — month-to-month',
+  'No contracts, month-to-month',
 ];
 
 export default function LawFirmsPage() {

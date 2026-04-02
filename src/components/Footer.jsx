@@ -11,7 +11,7 @@ const links = {
   'Who We Serve': [
     { label: 'Law Firms', href: '/for/law-firms' },
     { label: 'Dental Practices', href: '/for/dental-practices' },
-    { label: 'Accounting Firms', href: '/for/accounting-firms' },
+    { label: 'Accounting & Finance', href: '/for/accounting-firms' },
   ],
   Company: [
     { label: 'About', href: '/about' },

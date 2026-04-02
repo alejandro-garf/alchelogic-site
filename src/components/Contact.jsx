@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Calendar, ArrowRight } from 'lucide-react';
+import { Mail, Phone, Calendar, ArrowRight, Check } from 'lucide-react';
 
 const sanitizeInput = (input) => {
   if (typeof input !== 'string') return '';
@@ -51,7 +51,7 @@ export default function Contact() {
           email: sanitizeInput(formData.email),
           company: sanitizeInput(formData.company) || 'Not provided',
           message: sanitizeInput(formData.message) || 'Not provided',
-          subject: `New inquiry — ${sanitizeInput(formData.company) || sanitizeInput(formData.name)} | Alchelogic`,
+          subject: `New inquiry | ${sanitizeInput(formData.company) || sanitizeInput(formData.name)} | Alchelogic`,
           replyto: sanitizeInput(formData.email),
         }),
       });
@@ -111,10 +111,18 @@ export default function Contact() {
             </div>
 
             <div className="p-6 rounded-2xl border border-gray-700/50 bg-gray-800/20">
-              <h3 className="text-base font-bold text-white mb-1">🔍 Free Dark Web Scan</h3>
+              <h3 className="text-base font-bold text-white mb-1">Free Dark Web Scan</h3>
               <p className="text-sm mb-4 text-gray-400">Find out if your credentials are already exposed. Free scan, results in 24 hours.</p>
-              <a href="#credential-scan" className="inline-flex items-center gap-2 text-sm font-semibold text-violet-400 hover:text-violet-300 transition-all duration-200 hover:gap-3">
+              <a href="/free-credential-scan" className="inline-flex items-center gap-2 text-sm font-semibold text-violet-400 hover:text-violet-300 transition-all duration-200 hover:gap-3">
                 Request your free scan <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+
+            <div className="p-6 rounded-2xl border border-gray-700/50 bg-gray-800/20">
+              <h3 className="text-base font-bold text-white mb-1">7-Day Free Trial</h3>
+              <p className="text-sm mb-4 text-gray-400">Get the full security stack on every device. No credit card, no contracts.</p>
+              <a href="/free-trial" className="inline-flex items-center gap-2 text-sm font-semibold text-violet-400 hover:text-violet-300 transition-all duration-200 hover:gap-3">
+                Start your free trial <ArrowRight className="w-4 h-4" />
               </a>
             </div>
 
@@ -138,8 +146,8 @@ export default function Contact() {
           >
             {submitted ? (
               <div className="rounded-2xl p-8 border border-gray-700/50 bg-gray-800/30 text-center h-full flex flex-col items-center justify-center gap-4">
-                <div className="text-4xl">✅</div>
-                <h3 className="text-xl font-bold text-white">Got it — we'll be in touch!</h3>
+                <div className="w-12 h-12 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center mx-auto"><Check className="w-6 h-6 text-violet-400" /></div>
+                <h3 className="text-xl font-bold text-white">Got it, we'll be in touch!</h3>
                 <p className="text-sm text-gray-400">Want to move faster? Book a call directly.</p>
                 <a
                   href="https://calendly.com/alchelogic/alchelogic"
@@ -156,11 +164,11 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 className="space-y-4 rounded-2xl p-6 sm:p-8 border border-gray-700/50 bg-gray-800/20"
               >
-                <p className="text-sm font-medium text-gray-500">Or send us a message:</p>
+                <p className="text-sm font-bold text-white">Send Us a Message</p>
                 {[
                   { name: 'name', label: 'Your Name', type: 'text', placeholder: 'Jane Smith', autoComplete: 'name', required: true },
                   { name: 'email', label: 'Work Email', type: 'email', placeholder: 'jane@smithlaw.com', autoComplete: 'email', required: true },
-                  { name: 'company', label: 'Company Name', type: 'text', placeholder: 'Smith & Associates', autoComplete: 'organization', required: false },
+                  { name: 'company', label: 'Company Name', type: 'text', placeholder: 'Smith & Associates', autoComplete: 'organization', required: true },
                 ].map(({ name, label, type, placeholder, autoComplete, required }) => (
                   <div key={name}>
                     <label className="text-sm font-medium mb-1.5 block text-gray-300">
@@ -181,15 +189,16 @@ export default function Contact() {
                 ))}
                 <div>
                   <label className="text-sm font-medium mb-1.5 block text-gray-300">
-                    How many employees? <span className="font-normal text-gray-600">(helps us prep your quote)</span>
+                    Message <span className="text-violet-400">*</span>
                   </label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    rows={2}
+                    rows={4}
+                    required
                     className="w-full border border-gray-600 rounded-lg px-4 py-2.5 text-sm placeholder-gray-600 bg-gray-900/60 text-white focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition resize-none"
-                    placeholder="e.g. 12 employees — dental practice in San Jose"
+                    placeholder="Tell us about your business, how many employees you have, and what you're looking for."
                   />
                 </div>
                 <button
@@ -200,6 +209,7 @@ export default function Contact() {
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
                 {errors.form && <p className="text-red-400 text-center text-xs mt-2">{errors.form}</p>}
+                <p className="text-xs text-center text-gray-500 mt-2">We'll follow up via email within one business day.</p>
               </form>
             )}
           </motion.div>

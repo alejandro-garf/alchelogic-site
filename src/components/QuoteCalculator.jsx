@@ -2,9 +2,13 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calculator, Calendar, ArrowRight, Check } from 'lucide-react';
+import { Calculator, Calendar, ArrowRight, Check, ChevronUp, ChevronDown } from 'lucide-react';
 
-const PRICE_PER_SEAT = 49.99;
+const plans = [
+  { id: 'monthly', label: 'Monthly', price: 49.99, note: 'No commitment' },
+  { id: '6month', label: '6 Months', price: 44.99, note: 'Save 10%' },
+  { id: 'annual', label: 'Annual', price: 39.99, note: 'Save 20%' },
+];
 
 const included = [
   'SentinelOne Complete',
@@ -16,12 +20,15 @@ const included = [
 
 export default function QuoteCalculator() {
   const [seats, setSeats] = useState('');
+  const [plan, setPlan] = useState('monthly');
   const [showQuote, setShowQuote] = useState(false);
 
   const numSeats = parseInt(seats, 10);
   const isValid = !isNaN(numSeats) && numSeats >= 1;
-  const monthly = isValid ? (numSeats * PRICE_PER_SEAT).toFixed(2) : null;
-  const annual = isValid ? (numSeats * PRICE_PER_SEAT * 12).toFixed(2) : null;
+  const selectedPlan = plans.find((p) => p.id === plan);
+  const monthly = isValid ? (numSeats * selectedPlan.price).toFixed(2) : null;
+  const retailMonthly = isValid ? (numSeats * 75).toFixed(2) : null;
+  const annual = isValid ? (numSeats * selectedPlan.price * 12).toFixed(2) : null;
 
   return (
     <section id="quote" className="py-16 sm:py-24 relative">
@@ -47,17 +54,43 @@ export default function QuoteCalculator() {
         >
           <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-end mb-4">
             <div className="flex-1">
-              <label className="text-sm font-semibold mb-2 block text-gray-300">Number of employees / devices</label>
-              <input
-                type="number"
-                min="1"
-                max="999"
-                value={seats}
-                onChange={(e) => { setSeats(e.target.value); setShowQuote(false); }}
-                onKeyDown={(e) => e.key === 'Enter' && isValid && setShowQuote(true)}
-                placeholder="e.g. 12"
-                className="w-full border border-gray-600 rounded-xl px-5 py-3.5 text-2xl font-bold bg-gray-900/60 text-white placeholder-gray-600 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 transition"
-              />
+              <label className="text-sm font-bold mb-2 block text-white">Number of employees / devices</label>
+              <div className="relative">
+                <input
+                  type="number"
+                  min="1"
+                  max="999"
+                  value={seats}
+                  onChange={(e) => { setSeats(e.target.value); setShowQuote(false); }}
+                  onKeyDown={(e) => e.key === 'Enter' && isValid && setShowQuote(true)}
+                  placeholder="e.g. 12"
+                  className="w-full border border-gray-600 rounded-xl px-5 py-3.5 pr-10 text-2xl font-bold bg-gray-900/60 text-white placeholder-gray-600 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 transition"
+                />
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-0.5">
+                  <button type="button" onClick={() => { setSeats(String((parseInt(seats, 10) || 0) + 1)); setShowQuote(false); }} className="text-gray-500 hover:text-white transition-colors p-0 leading-none">
+                    <ChevronUp className="w-4 h-4" />
+                  </button>
+                  <button type="button" onClick={() => { const v = (parseInt(seats, 10) || 0) - 1; if (v >= 1) { setSeats(String(v)); setShowQuote(false); } }} className="text-gray-500 hover:text-white transition-colors p-0 leading-none">
+                    <ChevronDown className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="flex-1">
+              <label className="text-sm font-bold mb-2 block text-white">Billing Plan</label>
+              <div className="flex gap-2">
+                {plans.map((p) => (
+                  <button
+                    key={p.id}
+                    type="button"
+                    onClick={() => { setPlan(p.id); setShowQuote(false); }}
+                    className={`flex-1 py-3 px-2 rounded-xl text-xs font-semibold transition-all duration-200 border ${plan === p.id ? 'bg-violet-600 border-violet-500 text-white' : 'bg-gray-900/60 border-gray-600 text-gray-400 hover:border-violet-500/50'}`}
+                  >
+                    {p.label}
+                    <span className={`block text-[10px] mt-0.5 ${plan === p.id ? 'text-violet-200' : 'text-gray-600'}`}>{p.note}</span>
+                  </button>
+                ))}
+              </div>
             </div>
             <button
               onClick={() => isValid && setShowQuote(true)}
@@ -68,7 +101,7 @@ export default function QuoteCalculator() {
               Calculate
             </button>
           </div>
-          <p className="text-xs text-gray-600 mb-6">$49.99 per seat · per month · all 5 tools included · no contracts</p>
+          <p className="text-xs font-bold text-white mb-6">$49.99 Per Seat · Per Month · Everything Included · No Contracts</p>
 
           <AnimatePresence>
             {showQuote && isValid && (
@@ -82,8 +115,9 @@ export default function QuoteCalculator() {
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
                       <p className="text-sm font-semibold mb-1 text-violet-400">
-                        {numSeats} {numSeats === 1 ? 'seat' : 'seats'} · everything included
+                        {numSeats} {numSeats === 1 ? 'seat' : 'seats'} · {selectedPlan.label} plan · everything included
                       </p>
+                      <span className="text-lg font-bold text-red-400 line-through">${retailMonthly}/mo</span>
                       <div className="flex items-end gap-2">
                         <span className="text-5xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">${monthly}</span>
                         <span className="text-lg mb-1.5 text-gray-500">/month</span>
@@ -109,7 +143,7 @@ export default function QuoteCalculator() {
                     className="flex-1 inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-violet-600/25"
                   >
                     <Calendar className="w-5 h-5" />
-                    Book a Call — Get Started
+                    Book a Call: Get Started
                   </a>
                   <a
                     href="#contact"
@@ -119,8 +153,8 @@ export default function QuoteCalculator() {
                   </a>
                 </div>
 
-                <div className="mt-4 text-center p-3 rounded-lg bg-green-500/8 border border-green-500/20">
-                  <p className="text-sm font-medium text-green-400">🎉 Start with a free 7-day trial — no credit card required</p>
+                <div className="mt-4 text-center p-3 rounded-lg bg-violet-500/8 border border-violet-500/20">
+                  <p className="text-sm font-medium text-violet-400">Start with a free 7-day trial, no credit card required</p>
                 </div>
 
                 <button

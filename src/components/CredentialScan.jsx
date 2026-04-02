@@ -54,7 +54,7 @@ export default function CredentialScan({ compact = false }) {
           name: formData.name,
           email: formData.email,
           domain: formData.domain,
-          subject: `FREE CREDENTIAL SCAN REQUEST — ${formData.domain} | Alchelogic`,
+          subject: `FREE CREDENTIAL SCAN REQUEST | ${formData.domain} | Alchelogic`,
           message: `Credential scan requested for domain: ${formData.domain}`,
           replyto: formData.email,
           request_type: 'credential_scan',
@@ -145,7 +145,7 @@ export default function CredentialScan({ compact = false }) {
             />
           </div>
           {errors.domain && <p className="text-red-400 text-xs mt-1">{errors.domain}</p>}
-          <p className="text-xs mt-1 text-gray-600">Enter domain only — e.g. smithlaw.com</p>
+          <p className="text-xs mt-1 text-gray-600">Enter domain only, e.g. smithlaw.com</p>
         </div>
         <button
           type="submit"
@@ -157,6 +157,7 @@ export default function CredentialScan({ compact = false }) {
         </button>
         {errors.form && <p className="text-red-400 text-xs text-center">{errors.form}</p>}
         <p className="text-xs text-center text-gray-700">Free. No credit card. No obligation. No pitch.</p>
+        <p className="text-xs text-center text-gray-500 mt-1">We'll follow up via email within 24 business hours.</p>
       </form>
     </div>
   );
@@ -179,7 +180,7 @@ export default function CredentialScan({ compact = false }) {
             </h2>
             <p className="text-base sm:text-lg text-gray-400 leading-relaxed mb-6">
               The average breach goes undetected for <span className="text-white font-semibold">287 days</span>.
-              We'll scan the dark web for credentials tied to your domain and send you a full report — free, with no obligation.
+              We'll scan the dark web for credentials tied to your domain and send you a full report, free, with no obligation.
             </p>
             <ul className="space-y-3 mb-8">
               {whatWeFind.map((item) => (

@@ -13,18 +13,18 @@ const risks = [
   { title: 'HIPAA Breach Notifications & Fines', description: 'A breach exposing patient records triggers mandatory HHS notification, patient notification, and fines up to $1.9M per violation category per year. Most dental practices are not prepared.' },
   { title: 'Practice Management Software Attacks', description: 'Dentrix, Eaglesoft, and Open Dental are frequent ransomware targets. Attackers encrypt your schedule and patient records and demand payment to restore access.' },
   { title: 'Patient Record Theft', description: 'Protected health information (PHI) sells for 40x more than credit card data on criminal markets. Your patient database is a high-value target.' },
-  { title: 'HITECH Act Requirements', description: 'The Health Information Technology for Economic and Clinical Health Act expands HIPAA Security Rule requirements and increases penalties for non-compliance — including for business associates.' },
+  { title: 'HITECH Act Requirements', description: 'The Health Information Technology for Economic and Clinical Health Act expands HIPAA Security Rule requirements and increases penalties for non-compliance, including for business associates.' },
 ];
 
 const included = [
-  'SentinelOne Complete — stops ransomware before encryption',
-  'StellarCyber XDR — full visibility into your practice network',
-  'Coda Attack Surface Management — continuous vulnerability scanning',
-  'PDQ Patch Management — keeps practice software current',
-  '24/7 SOC monitoring — humans watching around the clock',
+  'SentinelOne Complete: stops ransomware before encryption',
+  'StellarCyber XDR: full visibility into your practice network',
+  'Coda Attack Surface Management: continuous vulnerability scanning',
+  'PDQ Patch Management: keeps practice software current',
+  '24/7 SOC monitoring: humans watching around the clock',
   'HIPAA technical safeguard documentation available',
   'Setup & onboarding included',
-  'No contracts — month-to-month',
+  'No contracts, month-to-month',
 ];
 
 export default function DentalPracticesPage() {
@@ -46,7 +46,7 @@ export default function DentalPracticesPage() {
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-8">
               Patient records are worth 40x more than credit card data on criminal markets.
-              Your practice is a target — and HIPAA requires you to do something about it.
+              Your practice is a target, and HIPAA requires you to do something about it.
               We make that affordable and automatic.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex flex-col sm:flex-row gap-4 justify-center">

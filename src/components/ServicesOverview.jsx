@@ -1,14 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Shield, Radio, Radar, Wrench, MonitorCheck } from 'lucide-react';
+import { Shield, Radio, Radar, Wrench, MonitorCheck, ArrowRight } from 'lucide-react';
 
 const stack = [
   {
     icon: Shield,
     name: 'SentinelOne Complete',
     what: 'AI-powered endpoint detection & response',
-    description: 'Stops malware, ransomware, and zero-day attacks on every device — before they execute. One-click rollback restores systems to their pre-attack state.',
+    description: 'Stops malware, ransomware, and zero-day attacks on every device before they execute. One-click rollback restores systems to their pre-attack state.',
   },
   {
     icon: Radio,
@@ -20,7 +20,7 @@ const stack = [
     icon: Radar,
     name: 'Coda Attack Surface Management',
     what: 'Continuous vulnerability scanning',
-    description: 'Continuously maps and monitors your external attack surface. Finds exposures before attackers do — and alerts us so we can act.',
+    description: 'Continuously maps and monitors your external attack surface. Finds exposures before attackers do, and alerts us so we can act.',
   },
   {
     icon: Wrench,
@@ -32,7 +32,7 @@ const stack = [
     icon: MonitorCheck,
     name: '24/7 SOC Monitoring',
     what: 'Human analysts watching around the clock',
-    description: 'A dedicated security operations center monitors your environment 24 hours a day. When something triggers, humans investigate and contain — not just alert.',
+    description: 'A dedicated security operations center monitors your environment 24 hours a day. When something triggers, humans investigate and contain, not just alert.',
   },
 ];
 
@@ -86,18 +86,17 @@ export default function ServicesOverview() {
               </motion.div>
             );
           })}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-10"
-        >
-          <a href="#quote" className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-violet-600/25">
-            See What This Costs for My Business
-          </a>
+          <motion.a
+            href="#quote"
+            variants={item}
+            className="group relative rounded-2xl border border-violet-500/40 bg-gradient-to-br from-violet-500/15 to-purple-500/10 p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/20 flex flex-col items-center justify-center text-center cursor-pointer"
+          >
+            <h3 className="text-base font-bold text-white mb-2">All five tools. One flat price.</h3>
+            <p className="text-sm text-gray-400 mb-4">See what it costs for your team.</p>
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:gap-3 transition-all duration-200">
+              Instant Quote Calculator <ArrowRight className="w-6 h-6" />
+            </span>
+          </motion.a>
         </motion.div>
       </div>
     </section>

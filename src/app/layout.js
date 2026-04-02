@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: 'Alchelogic | Managed Cybersecurity for Small Business — $49.99/seat/month',
+  title: 'Alchelogic | Managed Cybersecurity for Small Business | $49.99/seat/month',
   description:
-    'Enterprise-grade managed cybersecurity for small businesses. SentinelOne, StellarCyber XDR, 24/7 SOC monitoring — $49.99/seat/month. 7-day free trial, no contracts. Serving law firms, dental practices, and accounting firms.',
+    'Enterprise-grade managed cybersecurity for small businesses. SentinelOne, StellarCyber XDR, 24/7 SOC monitoring. $49.99/seat/month. 7-day free trial, no contracts. Serving law firms, dental practices, and accounting firms.',
   metadataBase: new URL('https://alchelogic.com'),
   openGraph: {
     title: 'Alchelogic | Enterprise Security. Small Business Pricing.',

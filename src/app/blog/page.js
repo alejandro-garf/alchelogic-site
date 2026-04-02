@@ -10,13 +10,13 @@ import { ArrowRight, Clock } from 'lucide-react';
 const posts = [
   {
     title: 'Why Law Firms Are the #1 Target for Ransomware in 2025',
-    excerpt: 'Legal practices hold client financial data, confidential communications, and operate under strict confidentiality obligations — making them uniquely attractive to ransomware gangs who know deadline pressure forces payment.',
+    excerpt: 'Legal practices hold client financial data, confidential communications, and operate under strict confidentiality obligations, making them uniquely attractive to ransomware gangs who know deadline pressure forces payment.',
     category: 'Threat Intelligence',
     readTime: '6 min read',
     coming: true,
   },
   {
-    title: 'What the HIPAA Security Rule Actually Requires — In Plain English',
+    title: 'What the HIPAA Security Rule Actually Requires: In Plain English',
     excerpt: 'Most dental and healthcare practices know HIPAA exists but don\'t understand what the Security Rule technically mandates. Here\'s a plain-English breakdown of the technical safeguards requirements and what they mean for your practice.',
     category: 'Compliance',
     readTime: '8 min read',
@@ -31,7 +31,7 @@ const posts = [
   },
   {
     title: 'SentinelOne vs. Traditional Antivirus: What\'s Actually Different',
-    excerpt: 'Traditional antivirus matches files against a database of known threats. SentinelOne uses AI behavioral analysis to detect threats based on what they do — catching zero-days and novel attacks that antivirus misses completely.',
+    excerpt: 'Traditional antivirus matches files against a database of known threats. SentinelOne uses AI behavioral analysis to detect threats based on what they do, catching zero-days and novel attacks that antivirus misses completely.',
     category: 'Product',
     readTime: '7 min read',
     coming: true,

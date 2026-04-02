@@ -43,3 +43,18 @@ img {
   background: linear-gradient(180deg, #7c3aed, #a855f7);
   border-radius: 4px;
 }
+
+a {
+  text-decoration: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+

@@ -3,7 +3,6 @@
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import TrustBar from '@/components/TrustBar';
 import Stats from '@/components/Stats';
 import ICPCards from '@/components/ICPCards';
 import ServicesOverview from '@/components/ServicesOverview';
@@ -24,7 +23,6 @@ export default function Home() {
       <main className="relative z-10 min-h-screen">
         <Navbar />
         <Hero />
-        <TrustBar />
         <Stats />
         <ICPCards />
         <ServicesOverview />

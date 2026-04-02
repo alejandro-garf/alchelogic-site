@@ -10,7 +10,7 @@ import { Shield, Clock, Search } from 'lucide-react';
 const trust = [
   { icon: Search, text: 'We search 15+ billion leaked credentials' },
   { icon: Clock, text: 'Results delivered within 24 business hours' },
-  { icon: Shield, text: '100% free — no credit card, no obligation' },
+  { icon: Shield, text: '100% free, no credit card, no obligation' },
 ];
 
 export default function FreeCredentialScanPage() {
@@ -42,7 +42,7 @@ export default function FreeCredentialScanPage() {
             className="text-lg text-gray-400 max-w-xl mx-auto mb-8"
           >
             The average breach goes undetected for 287 days. We'll scan the dark web for
-            credentials tied to your business domain and send you a full report — no cost, no strings attached.
+            credentials tied to your business domain and send you a full report. No cost, no strings attached.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 10 }}

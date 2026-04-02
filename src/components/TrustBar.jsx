@@ -6,7 +6,7 @@ const partners = ['SentinelOne', 'StellarCyber', 'Coda', 'PDQ Deploy'];
 
 export default function TrustBar() {
   return (
-    <section className="relative z-10 py-10 px-4 border-t border-b border-gray-800/60">
+    <section id="next-section" className="relative z-10 py-10 px-4 border-t border-b border-gray-800/60">
       <div className="max-w-5xl mx-auto">
         <p className="text-xs uppercase tracking-widest text-center mb-6 text-gray-600">
           Powered by industry-leading enterprise technology

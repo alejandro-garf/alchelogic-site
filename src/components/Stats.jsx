@@ -32,7 +32,7 @@ const item = {
 
 export default function Stats() {
   return (
-    <section className="py-16 sm:py-24">
+    <section id="next-section" className="py-16 sm:py-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -45,11 +45,11 @@ export default function Stats() {
             Why It Matters
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
-            Small Businesses Are the Primary Target
+            Small &amp; Midsize Organizations Are the Primary Target
           </h2>
           <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto text-gray-400">
-            Attackers know small businesses have valuable data and weaker defenses.
-            That combination makes you the easiest target in the room.
+            Small businesses, midsize firms, and nonprofits all hold valuable data
+            but rarely have the security to match. Attackers know this, and they target you because of it.
           </p>
         </motion.div>
 

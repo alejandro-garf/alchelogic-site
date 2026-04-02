@@ -11,20 +11,20 @@ import { Calculator, AlertTriangle, ShieldCheck } from 'lucide-react';
 
 const risks = [
   { title: 'IRS Data Security Requirements', description: 'IRS Publication 4557 and the FTC Safeguards Rule require tax preparers and accounting firms to maintain a written information security plan and implement technical safeguards. Non-compliance risks your PTIN.' },
-  { title: 'Tax Season Ransomware Surge', description: 'Ransomware attacks on accounting firms spike 400%+ during January–April. Attackers time attacks to maximize pressure from filing deadlines — when you cannot afford downtime.' },
+  { title: 'Tax Season Ransomware Surge', description: 'Ransomware attacks on accounting firms spike 400%+ during January–April. Attackers time attacks to maximize pressure from filing deadlines, when you cannot afford downtime.' },
   { title: 'Client Financial Data Theft', description: 'Tax returns, financial statements, and bank records are among the most valuable information available. Your client data is a premium target year-round.' },
   { title: 'Business Email Compromise', description: 'Attackers impersonate partners or clients to redirect bank transfers and payroll. Accounting firms are the highest-value BEC targets due to direct access to financial transactions.' },
 ];
 
 const included = [
-  'SentinelOne Complete — stops malware before it executes',
-  'StellarCyber XDR — monitors every connection on your network',
-  'Coda Attack Surface Management — finds your vulnerabilities first',
-  'PDQ Patch Management — keeps all software current automatically',
-  '24/7 SOC monitoring — real humans watching around the clock',
+  'SentinelOne Complete: stops malware before it executes',
+  'StellarCyber XDR: monitors every connection on your network',
+  'Coda Attack Surface Management: finds your vulnerabilities first',
+  'PDQ Patch Management: keeps all software current automatically',
+  '24/7 SOC monitoring: real humans watching around the clock',
   'IRS Publication 4557 technical safeguard documentation available',
   'Setup & onboarding included',
-  'No contracts — month-to-month',
+  'No contracts, month-to-month',
 ];
 
 export default function AccountingFirmsPage() {
@@ -38,15 +38,15 @@ export default function AccountingFirmsPage() {
           <div className="max-w-4xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1.5 mb-6">
               <Calculator className="w-4 h-4 text-amber-400" />
-              <span className="text-sm font-medium text-amber-400">Cybersecurity for Accounting Firms</span>
+              <span className="text-sm font-medium text-amber-400">Cybersecurity for Accounting & Finance Firms</span>
             </motion.div>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
               Protect Client Financial Data.<br />
               <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Year-Round. Not Just at Tax Time.</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-8">
-              Accounting firms face IRS data security mandates, FTC Safeguards Rule requirements,
-              and the highest rate of ransomware targeting during tax season.
+              Accounting firms, wealth managers, and family offices all face IRS data security mandates,
+              FTC Safeguards Rule requirements, and rising ransomware targeting.
               We make compliance and protection simple at $49.99/seat/month.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -64,7 +64,7 @@ export default function AccountingFirmsPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <span className="inline-block text-sm font-semibold tracking-widest uppercase text-red-400 mb-3">The Threat Landscape</span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white">Why Accounting Firms Are Targeted</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">Why Finance Firms Are Targeted</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {risks.map((risk, i) => (
