@@ -3,7 +3,10 @@
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Navbar from '@/components/Navbar';
 import Pricing from '@/components/Pricing';
+import FAQ from '@/components/FAQ';
+import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import StickyScanner from '@/components/StickyScanner';
 
 export default function PricingPage() {
   return (
@@ -13,9 +16,12 @@ export default function PricingPage() {
         <Navbar />
         <div className="pt-20">
           <Pricing />
+          <FAQ limit={6} />
+          <Contact />
         </div>
         <Footer />
       </main>
+      <StickyScanner />
     </>
   );
 }

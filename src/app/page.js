@@ -5,14 +5,17 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import TrustBar from '@/components/TrustBar';
 import Stats from '@/components/Stats';
-import CredentialScan from '@/components/CredentialScan';
+import ICPCards from '@/components/ICPCards';
 import ServicesOverview from '@/components/ServicesOverview';
 import Features from '@/components/Features';
 import QuoteCalculator from '@/components/QuoteCalculator';
-import About from '@/components/About';
+import CredentialScan from '@/components/CredentialScan';
+import FAQ from '@/components/FAQ';
 import PricingOverview from '@/components/PricingOverview';
+import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import StickyScanner from '@/components/StickyScanner';
 
 export default function Home() {
   return (
@@ -23,17 +26,18 @@ export default function Home() {
         <Hero />
         <TrustBar />
         <Stats />
-        <div id="free-trial" className="scroll-mt-24">
-          <PricingOverview />
-        </div>
-        <CredentialScan />
+        <ICPCards />
         <ServicesOverview />
         <Features />
         <QuoteCalculator />
+        <CredentialScan />
+        <FAQ limit={6} />
+        <PricingOverview />
         <About />
         <Contact />
         <Footer />
       </main>
+      <StickyScanner />
     </>
   );
 }

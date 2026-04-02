@@ -1,37 +1,28 @@
 'use client';
 
-import { useTheme } from '@/context/ThemeContext';
+import { motion } from 'framer-motion';
 
-const partners = [
-  { name: 'SentinelOne' },
-  { name: 'StellarCyber' },
-  { name: 'Coda' },
-  { name: 'PDQ' },
-];
+const partners = ['SentinelOne', 'StellarCyber', 'Coda', 'PDQ Deploy'];
 
 export default function TrustBar() {
-  const { isDark } = useTheme();
-
   return (
-    <section className={`relative z-10 py-12 sm:py-16 px-4 border-t border-b ${
-      isDark ? 'border-gray-800/50' : 'border-gray-200/50'
-    }`}>
+    <section className="relative z-10 py-10 px-4 border-t border-b border-gray-800/60">
       <div className="max-w-5xl mx-auto">
-        <p className={`text-xs sm:text-sm uppercase tracking-wider text-center mb-6 sm:mb-8 ${
-          isDark ? 'text-gray-500' : 'text-gray-500'
-        }`}>
-          Powered By Industry Leaders
+        <p className="text-xs uppercase tracking-widest text-center mb-6 text-gray-600">
+          Powered by industry-leading enterprise technology
         </p>
-        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12">
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
           {partners.map((partner, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`opacity-50 hover:opacity-100 transition-all duration-300 text-base sm:text-lg md:text-xl font-semibold tracking-wide hover:scale-110 ${
-                isDark ? 'text-gray-400' : 'text-gray-700'
-              }`}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="text-lg md:text-xl font-bold tracking-wide text-gray-600 hover:text-violet-400 transition-colors duration-300 cursor-default"
             >
-              {partner.name}
-            </div>
+              {partner}
+            </motion.div>
           ))}
         </div>
       </div>
