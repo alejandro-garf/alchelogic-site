@@ -45,14 +45,6 @@ export default function Navbar() {
               About
             </a>
             <a
-              href="/services"
-              className={`text-sm font-medium transition-all duration-300 hover:scale-110 ${
-                isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Services
-            </a>
-            <a
               href="/pricing"
               className={`text-sm font-medium transition-all duration-300 hover:scale-110 ${
                 isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
@@ -129,15 +121,6 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
             >
               About
-            </a>
-            <a
-              href="/services"
-              className={`text-2xl font-medium transition-all duration-300 hover:scale-110 ${
-                isDark ? 'text-white hover:text-violet-400' : 'text-gray-900 hover:text-violet-600'
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              Services
             </a>
             <a
               href="/pricing"

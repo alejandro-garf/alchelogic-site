@@ -9,8 +9,26 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Alchelogic | Cybersecurity & Software Solutions",
-  description: "Complete cybersecurity & software solutions for nonprofits and small businesses. 24/7 protection without the enterprise price tag.",
+  title: 'Alchelogic | Enterprise Cybersecurity for Small Business',
+  description:
+    'Complete managed cybersecurity for small businesses — $49.99/seat/month. SentinelOne, XDR, 24/7 SOC monitoring. 7-day free trial. No contracts.',
+  metadataBase: new URL('https://alchelogic.com'),
+  openGraph: {
+    title: 'Alchelogic | Enterprise Security. Small Business Pricing.',
+    description:
+      'SentinelOne, StellarCyber XDR, 24/7 monitoring — complete protection at $49.99/seat/month. 7-day free trial, no contracts.',
+    url: 'https://alchelogic.com',
+    siteName: 'Alchelogic',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Alchelogic | Enterprise Security. Small Business Pricing.',
+    description: 'Complete managed cybersecurity for small businesses. $49.99/seat/month. 7-day free trial. No contracts.',
+  },
+  robots: { index: true, follow: true },
+  alternates: { canonical: 'https://alchelogic.com' },
 };
 
 export const viewport = {
